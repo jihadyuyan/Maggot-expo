@@ -33,7 +33,7 @@ export default function TabTwoScreen() {
               <AntDesign
                 name="doubleleft"
                 size={24}
-                color={colorScheme === "dark" ? "#ed7756" : "#0d3876"}
+                color={colorScheme === "dark" ? "#2f3254" : "#0d3876"}
                 style={styles.bek}
               />
             </View>
@@ -41,16 +41,16 @@ export default function TabTwoScreen() {
         </TouchableOpacity>
         <TouchableOpacity onPress={handleOnPress}>
           <View lightColor="#e2e8f3" darkColor="#fff" style={styles.tombol}>
-            <Text lightColor="#0d3876" darkColor="#ed7756" style={styles.dor}>
+            <Text lightColor="#0d3876" darkColor="#2f3254" style={styles.dor}>
               Buka
             </Text>
-            <Text lightColor="#0d3876" darkColor="#ed7756" style={styles.buka}>
+            <Text lightColor="#0d3876" darkColor="#2f3254" style={styles.buka}>
               Kalender
             </Text>
             <MaterialCommunityIcons
               name="calendar-cursor"
               size={32}
-              color={colorScheme === "dark" ? "#ed7756" : "#0d3876"}
+              color={colorScheme === "dark" ? "#2f3254" : "#0d3876"}
               style={styles.kalender}
             />
             <Modal animationType="fade" transparent={true} visible={open}>
@@ -61,7 +61,7 @@ export default function TabTwoScreen() {
               >
                 <View
                   lightColor="#f5f5f5"
-                  darkColor="#2f3254"
+                  darkColor="#fff"
                   style={styles.modalView}
                 >
                   <DatePicker
@@ -72,18 +72,18 @@ export default function TabTwoScreen() {
                       textDefaultColor: "#0d3876",
                       selectedTextColor: "#fff",
                       mainColor: "#0d3876",
-                      defaultFont: "Nunito",
+                      defaultFont: "Poppins",
                       textSecondaryColor: "#0d3876",
-                      headerFont: "Nunito",
+                      headerFont: "PoppinsSemiBold",
                     }}
                   />
                   <TouchableOpacity onPress={handleOnPress}>
                     <Text
                       lightColor="#0d3876"
-                      darkColor="#f5f5f5"
+                      darkColor="#0d3876"
                       style={styles.tutup}
                     >
-                      Close
+                      Tutup
                     </Text>
                   </TouchableOpacity>
                 </View>
@@ -92,42 +92,19 @@ export default function TabTwoScreen() {
           </View>
         </TouchableOpacity>
         <View lightColor="#e2e8f3" darkColor="white" style={styles.topbox}>
-          <Text lightColor="#0d3876" darkColor="#ed7756" style={styles.top}>
+          <Text lightColor="#0d3876" darkColor="#2f3254" style={styles.top}>
             History
           </Text>
           <Ionicons
             name="stats-chart-outline"
             size={18}
-            color={colorScheme === "dark" ? "#ed7756" : "#0d3876"}
+            color={colorScheme === "dark" ? "#2f3254" : "#0d3876"}
           />
         </View>
       </View>
       <Text lightColor="#0d3876" darkColor="#fff" style={styles.akun}>
         Hari ini, 24 April 2023
       </Text>
-      <View lightColor="#e0e7f2" darkColor="#303355" style={styles.kotak}>
-        <Text lightColor="#0d3876" darkColor="#fff" style={styles.stats}>
-          Statistik
-        </Text>
-        <View lightColor="#0d3876" darkColor="#6455cd" style={styles.metan}>
-          <Text lightColor="#e2e8f3" darkColor="#fff" style={styles.ch4}>
-            {" "}
-            CH4{" "}
-          </Text>
-        </View>
-        <View lightColor="#e2e8f3" darkColor="#ed7756" style={styles.amonia}>
-          <Text lightColor="#0d3876" darkColor="#fff" style={styles.nh3}>
-            {" "}
-            NH3{" "}
-          </Text>
-        </View>
-        <View lightColor="#e2e8f3" darkColor="#96cdc2" style={styles.monok}>
-          <Text lightColor="#0d3876" darkColor="#fff" style={styles.co}>
-            {" "}
-            CO{" "}
-          </Text>
-        </View>
-      </View>
       <StatusBar style="auto" />
     </View>
   );
@@ -250,7 +227,7 @@ const styles = StyleSheet.create({
     margin: 20,
     borderRadius: 20,
     width: "90%",
-    padding: 35,
+    padding: 25,
     alignItems: "center",
     shadowColor: "#000",
     shadowOffset: {
@@ -266,106 +243,10 @@ const styles = StyleSheet.create({
     fontFamily: "Nunito",
     fontSize: 23,
     fontWeight: "bold",
-    marginTop: 20,
+    marginTop: 30,
     marginLeft: 80,
   },
-  kotak: {
-    height: 500,
-    width: "100%",
-    flexDirection: "column",
-    paddingLeft: 11,
-    borderRadius: 10,
-    gap: 5,
-    marginTop: 20,
-    paddingTop: 40,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 12,
-    },
-    shadowOpacity: 0.58,
-    shadowRadius: 16.0,
 
-    elevation: 24,
-    marginBottom: 15,
-  },
-  stats: {
-    fontFamily: "Nunito",
-    fontSize: 20,
-    fontWeight: "bold",
-    position: "absolute",
-    top: 15,
-    left: 16,
-  },
-  metan: {
-    height: 120,
-    width: 350,
-    borderRadius: 15,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 8,
-    },
-    shadowOpacity: 0.46,
-    shadowRadius: 11.14,
-
-    elevation: 17,
-    marginTop: 20,
-  },
-  ch4: {
-    fontSize: 20,
-    fontFamily: "Nunito",
-    fontWeight: "bold",
-    position: "absolute",
-    top: 15,
-    right: 15,
-  },
-  nh3: {
-    fontSize: 20,
-    fontFamily: "Nunito",
-    fontWeight: "bold",
-    position: "absolute",
-    top: 15,
-    right: 15,
-  },
-  amonia: {
-    height: 120,
-    width: 350,
-    borderRadius: 15,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 8,
-    },
-    shadowOpacity: 0.46,
-    shadowRadius: 11.14,
-
-    elevation: 17,
-    marginTop: 20,
-  },
-  monok: {
-    height: 120,
-    width: 350,
-    borderRadius: 15,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 8,
-    },
-    shadowOpacity: 0.46,
-    shadowRadius: 11.14,
-
-    elevation: 17,
-    marginTop: 20,
-  },
-  co: {
-    fontSize: 20,
-    fontFamily: "Nunito",
-    fontWeight: "bold",
-    position: "absolute",
-    top: 15,
-    right: 15,
-  },
   tutup: {
     fontFamily: "Nunito",
     fontSize: 18,
