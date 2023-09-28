@@ -1,6 +1,9 @@
-import { FlatList } from "react-native";
+import { Animated, Dimensions, FlatList } from "react-native";
 import { StyleSheet } from "react-native";
 import { Text, View } from "../Themed";
+import React from "react";
+
+const { height, width } = Dimensions.get("window");
 
 const DATA = [
   {
@@ -21,29 +24,40 @@ const DATA = [
 ];
 
 export default function Card() {
+  const scrollX = React.useRef(new Animated.Value(0)).current;
   return (
     <View>
-      <FlatList
+      <Animated.FlatList
         data={DATA}
         keyExtractor={(item) => item.key}
         horizontal
         pagingEnabled
+        showsHorizontalScrollIndicator={false}
+        onScroll={Animated.event(
+          [{ nativeEvent: { contentOffset: { x: scrollX } } }],
+          { useNativeDriver: true }
+        )}
         renderItem={({ item }) => (
-          <View style={Style.Card}>
-            <Text>{item.title}</Text>
+          <View style={Style.container}>
+            <View style={Style.Card}>
+              <Text>
+                {item.title} {item.unit}
+              </Text>
+            </View>
           </View>
         )}
       />
-
-      <Text>Card</Text>
     </View>
   );
 }
 
 const Style = StyleSheet.create({
+  container: {
+    paddingHorizontal: 15,
+  },
   Card: {
-    widht: "100%",
-    height: 200,
+    width: width * 0.8,
+    height: height / 3,
     paddingHorizontal: 10,
     paddingVertical: 10,
     borderRadius: 10,

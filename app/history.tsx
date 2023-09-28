@@ -9,6 +9,7 @@ import { useColorScheme } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import { Link } from "expo-router";
+import Card from "../components/card/Card";
 
 export default function TabTwoScreen() {
   const [selectedDate, setSelectedDate] = useState("");
@@ -109,7 +110,7 @@ export default function TabTwoScreen() {
         <Text lightColor="#0d3876" darkColor="#fff" style={styles.stats}>
           Statistik
         </Text>
-        <View lightColor="#0d3876" darkColor="#6455cd" style={styles.metan}>
+        {/* <View lightColor="#0d3876" darkColor="#6455cd" style={styles.metan}>
           <Text lightColor="#e2e8f3" darkColor="#fff" style={styles.ch4}>
             {" "}
             CH4{" "}
@@ -126,7 +127,8 @@ export default function TabTwoScreen() {
             {" "}
             CO{" "}
           </Text>
-        </View>
+        </View> */}
+        <Card />
       </View>
       <StatusBar style="auto" />
     </View>
@@ -271,7 +273,6 @@ const styles = StyleSheet.create({
   },
   kotak: {
     height: 500,
-    width: "100%",
     flexDirection: "column",
     paddingLeft: 11,
     borderRadius: 10,
@@ -285,7 +286,6 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.58,
     shadowRadius: 16.0,
-
     elevation: 24,
     marginBottom: 15,
   },
