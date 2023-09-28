@@ -5,62 +5,51 @@ import { Entypo } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import { Text, View } from "../components/Themed";
 import { Link } from "expo-router";
+import { Header } from "../components/Header";
 
 export default function TabOneScreen() {
   const colorScheme = useColorScheme();
   return (
-    <View lightColor="#f5f5f5" darkColor="#2f3254" style={styles.container}>
-      <View lightColor="#f5f5f5" darkColor="#2f3254" style={styles.bar}>
-        <Text lightColor="#0d3876" darkColor="#fff" style={styles.atas}>
-          HELLO.
-        </Text>
-        <Text lightColor="#0d3876" darkColor="#fff" style={styles.maggot}>
-          Maggot App.
-        </Text>
-        <Text lightColor="#0d3876" darkColor="#fff" style={styles.tengah}>
-          Home
-        </Text>
-        <AntDesign name="home" size={30} color="#f5f5f5" style={styles.logo} />
-        <View
-          lightColor="#0d3876"
-          darkColor="#6455cd"
-          style={styles.kotaklogo}
-        ></View>
+    <View style={styles.container}>
+      <Header title="Home" />
+      <View style={styles.hero}>
+        <View>
+          <Text style={styles.text}>HELLO.</Text>
+          <Text style={styles.title}>Maggot App.</Text>
+        </View>
+        <View lightColor="#0d3876" darkColor="#6455cd" style={styles.kotaklogo}>
+          <AntDesign name="home" size={30} color="#f5f5f5" />
+        </View>
       </View>
       <View
-        lightColor="#f5f5f5"
-        darkColor="#2f3254"
         style={[
           styles.kotak,
           { borderColor: colorScheme === "dark" ? "#6455cd" : "#0d3876" },
         ]}
       >
-        <Text lightColor="#0d3876" darkColor="#fff" style={styles.welcome}>
-          Selamat Datang
-        </Text>
-        <Text lightColor="#0d3876" darkColor="#fff" style={styles.hari}>
-          Senin / 24 April
-        </Text>
-        <Text lightColor="#0d3876" darkColor="#fff" style={styles.tanggal}>
-          2023
-        </Text>
-        <View
-          lightColor="#e2e8f3"
-          darkColor="#6455cd"
-          style={styles.tangandaun}
-        >
-          <Entypo
-            name="leaf"
-            color={colorScheme === "dark" ? "#fff" : "#0d3876"}
-            size={20}
-            style={styles.daun}
-          />
-          <FontAwesome5
-            name="hand-holding"
-            size={25}
-            color={colorScheme === "dark" ? "#fff" : "#0d3876"}
-            style={styles.tangan}
-          />
+        <View>
+          <Text style={styles.text_sm}>Selamat Datang</Text>
+          <Text style={[styles.text_sm_bold, { flexGrow: 1 }]}>
+            Senin / 24 April {`\n`}2023
+          </Text>
+          <View
+            lightColor="#e2e8f3"
+            darkColor="#6455cd"
+            style={styles.tangandaun}
+          >
+            <Entypo
+              name="leaf"
+              color={colorScheme === "dark" ? "#fff" : "#0d3876"}
+              size={20}
+              style={styles.daun}
+            />
+            <FontAwesome5
+              name="hand-holding"
+              size={25}
+              color={colorScheme === "dark" ? "#fff" : "#0d3876"}
+              style={styles.tangan}
+            />
+          </View>
         </View>
         <View lightColor="#e2e8f3" darkColor="#6455cd" style={styles.dalam}>
           <Text lightColor="#0d3876" darkColor="#fff" style={styles.status}>
@@ -196,76 +185,57 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     paddingVertical: 20,
   },
-  bar: {
-    height: 100,
+  header: {
     width: "100%",
-    marginTop: 25,
+    height: 50,
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 20,
   },
-  tengah: {
-    fontSize: 15,
-    position: "absolute",
-    right: 167,
+  title: {
+    fontFamily: "PoppinsSemiBold",
+    fontSize: 20,
+  },
+  hero: {
+    width: "100%",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  text: {
     fontFamily: "Poppins",
-    fontWeight: "bold",
+    fontSize: 20,
   },
-  kalender: {
-    position: "absolute",
-    top: 20,
-    right: 10,
+  kotak: {
+    height: 170,
+    width: "100%",
+    marginVertical: 20,
+    borderRadius: 10,
+    padding: 20,
+    borderColor: "#0d3876",
+    borderWidth: 4,
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
 
-  logo: {
-    position: "absolute",
-    right: 10,
-    top: 33,
-    zIndex: 1,
-  },
   kotaklogo: {
+    justifyContent: "center",
+    alignItems: "center",
     height: 40,
     width: 40,
-    position: "absolute",
-    top: 30,
-    right: 5,
     borderRadius: 10,
   },
-  atas: {
-    fontSize: 20,
+  text_sm: {
     fontFamily: "Poppins",
-    position: "absolute",
-    top: 30,
-    left: 10,
-  },
-  maggot: {
-    fontSize: 20,
-    fontWeight: "bold",
-    position: "absolute",
-    top: 48,
-    left: 10,
-  },
-  welcome: {
-    fontFamily: "Nunito",
     fontSize: 17,
-    marginTop: 7,
-    marginBottom: 5,
   },
-  tanggal: {
+  text_sm_bold: {
     fontSize: 17,
-    fontFamily: "Nunito",
-    fontWeight: "bold",
-    marginBottom: 5,
-  },
-
-  hari: {
-    fontSize: 17,
-    fontFamily: "Nunito",
-    fontWeight: "bold",
+    fontFamily: "PoppinsSemiBold",
   },
   dalam: {
     height: 100,
     width: 165,
-    position: "absolute",
-    top: 11,
-    right: 10,
     borderRadius: 10,
   },
 
@@ -290,9 +260,6 @@ const styles = StyleSheet.create({
     height: 45,
     width: 45,
     borderRadius: 10,
-    position: "absolute",
-    bottom: 15,
-    left: 18,
   },
   tangan: {
     position: "absolute",
@@ -311,18 +278,6 @@ const styles = StyleSheet.create({
     top: 35,
     left: 8,
     borderRadius: 10,
-  },
-
-  kotak: {
-    height: 170,
-    width: "100%",
-    marginTop: 20,
-    marginBottom: 20,
-    borderRadius: 10,
-    paddingHorizontal: 20,
-    paddingVertical: 8,
-    borderColor: "#0d3876",
-    borderWidth: 4,
   },
 
   ongoing: {

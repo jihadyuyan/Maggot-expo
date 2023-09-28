@@ -21,7 +21,6 @@ export const unstable_settings = {
 
 export default function RootLayout() {
   const [loaded, error] = useFonts({
-    Nunito: require("../assets/fonts/Nunito-VariableFont_wght.ttf"),
     Poppins: require("../assets/fonts/Poppins-Regular.ttf"),
     PoppinsSemiBold: require("../assets/fonts/Poppins-SemiBold.ttf"),
 
