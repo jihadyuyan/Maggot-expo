@@ -1,20 +1,11 @@
-import {
-  StyleSheet,
-  Touchable,
-  TouchableOpacity,
-  useColorScheme,
-} from "react-native";
+import { StyleSheet, TouchableOpacity, useColorScheme } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
-import { Fontisto } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
-
-import EditScreenInfo from "../../components/EditScreenInfo";
-import { Text, View } from "../../components/Themed";
-import Colors from "../../constants/Colors";
-import Card from "../../components/card/Card";
-import { StatusBar } from "expo-status-bar";
+import EditScreenInfo from "../components/EditScreenInfo";
+import { Text, View } from "../components/Themed";
+import { Link } from "expo-router";
 
 export default function TabOneScreen() {
   const colorScheme = useColorScheme();
@@ -161,32 +152,34 @@ export default function TabOneScreen() {
           />
         </View>
         <TouchableOpacity>
-          <View
-            lightColor="#e2e8f3"
-            darkColor="#96cdc2"
-            style={styles.kotakhistory}
-          >
-            <Text lightColor="#0d3876" darkColor="#fff" style={styles.buka}>
-              Buka
-            </Text>
-            <Text lightColor="#0d3876" darkColor="#fff" style={styles.bukah}>
-              History
-            </Text>
-            <Ionicons
-              name="stats-chart-outline"
-              size={24}
-              color={colorScheme === "dark" ? "#fff" : "#0d3876"}
-              style={styles.history}
-            />
-            <View lightColor="#0d3876" darkColor="#fff" style={styles.kl}>
-              <AntDesign
-                name="doubleright"
+          <Link href="/history">
+            <View
+              lightColor="#e2e8f3"
+              darkColor="#96cdc2"
+              style={styles.kotakhistory}
+            >
+              <Text lightColor="#0d3876" darkColor="#fff" style={styles.buka}>
+                Buka
+              </Text>
+              <Text lightColor="#0d3876" darkColor="#fff" style={styles.bukah}>
+                History
+              </Text>
+              <Ionicons
+                name="stats-chart-outline"
                 size={24}
-                color={colorScheme === "dark" ? "#96cdc2" : "#fff"}
-                style={styles.kanan}
+                color={colorScheme === "dark" ? "#fff" : "#0d3876"}
+                style={styles.history}
               />
+              <View lightColor="#0d3876" darkColor="#fff" style={styles.kl}>
+                <AntDesign
+                  name="doubleright"
+                  size={24}
+                  color={colorScheme === "dark" ? "#96cdc2" : "#fff"}
+                  style={styles.kanan}
+                />
+              </View>
             </View>
-          </View>
+          </Link>
         </TouchableOpacity>
       </View>
       <View lightColor="#f5f5f5" darkColor="#2f3254" style={styles.slogan}>
@@ -213,7 +206,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     position: "absolute",
     right: 167,
-    fontFamily: "Nunito",
+    fontFamily: "Poppins",
     fontWeight: "bold",
   },
   kalender: {
@@ -238,7 +231,7 @@ const styles = StyleSheet.create({
   },
   atas: {
     fontSize: 20,
-    fontFamily: "Nunito",
+    fontFamily: "Poppins",
     position: "absolute",
     top: 30,
     left: 10,

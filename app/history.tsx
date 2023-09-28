@@ -7,14 +7,14 @@ import DatePicker, {
   getToday,
   getFormatedDate,
 } from "react-native-modern-datepicker";
-import EditScreenInfo from "../../components/EditScreenInfo";
-import { Text, View } from "../../components/Themed";
+import EditScreenInfo from "../components/EditScreenInfo";
+import { Text, View } from "../components/Themed";
 import { Ionicons } from "@expo/vector-icons";
 import { useColorScheme } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import { LineChart } from "react-native-chart-kit";
-
+import { Link } from "expo-router";
 export default function TabTwoScreen() {
   const [selectedDate, setSelectedDate] = useState("");
   const [open, setOpen] = useState(false);
@@ -33,14 +33,16 @@ export default function TabTwoScreen() {
         ]}
       >
         <TouchableOpacity>
-          <View lightColor="#e2e8f3" darkColor="#fff" style={styles.back}>
-            <AntDesign
-              name="doubleleft"
-              size={24}
-              color={colorScheme === "dark" ? "#ed7756" : "#0d3876"}
-              style={styles.bek}
-            />
-          </View>
+          <Link href="/">
+            <View lightColor="#e2e8f3" darkColor="#fff" style={styles.back}>
+              <AntDesign
+                name="doubleleft"
+                size={24}
+                color={colorScheme === "dark" ? "#ed7756" : "#0d3876"}
+                style={styles.bek}
+              />
+            </View>
+          </Link>
         </TouchableOpacity>
         <TouchableOpacity onPress={handleOnPress}>
           <View lightColor="#e2e8f3" darkColor="#fff" style={styles.tombol}>
