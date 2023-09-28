@@ -1,20 +1,15 @@
 import { Modal, StyleSheet, TouchableOpacity, Dimensions } from "react-native";
-import { FontAwesome5 } from "@expo/vector-icons";
 import { useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import DatePicker, {
-  getToday,
-  getFormatedDate,
-} from "react-native-modern-datepicker";
-import EditScreenInfo from "../components/EditScreenInfo";
+import DatePicker from "react-native-modern-datepicker";
 import { Text, View } from "../components/Themed";
 import { Ionicons } from "@expo/vector-icons";
 import { useColorScheme } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
-import { LineChart } from "react-native-chart-kit";
 import { Link } from "expo-router";
+
 export default function TabTwoScreen() {
   const [selectedDate, setSelectedDate] = useState("");
   const [open, setOpen] = useState(false);
