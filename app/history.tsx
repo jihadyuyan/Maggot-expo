@@ -120,7 +120,10 @@ const styles = StyleSheet.create({
     height: 200,
     width: "100%",
     borderRadius: 10,
-    marginTop: 30,
+    marginTop: 35,
+    borderWidth: 5,
+    paddingVertical: 10,
+    paddingHorizontal: 10,
   },
   tanggal: {
     fontFamily: "Nunito",
@@ -142,9 +145,6 @@ const styles = StyleSheet.create({
     height: 40,
     width: 40,
     borderRadius: 50,
-    position: "absolute",
-    top: 10,
-    left: 10,
   },
   bek: {
     position: "absolute",
@@ -174,15 +174,14 @@ const styles = StyleSheet.create({
   },
   top: {
     fontSize: 15,
-    fontWeight: "bold",
-    fontFamily: "Nunito",
+    fontFamily: "PoppinsSemiBold",
   },
   tombol: {
     width: 100,
     height: 100,
     position: "absolute",
-    right: 20,
-    top: 70,
+    right: 10,
+    top: 30,
     borderRadius: 10,
     paddingHorizontal: 10,
     justifyContent: "center",
@@ -240,17 +239,15 @@ const styles = StyleSheet.create({
   },
 
   akun: {
-    fontFamily: "Nunito",
-    fontSize: 23,
-    fontWeight: "bold",
+    fontFamily: "PoppinsSemiBold",
+    fontSize: 25,
     marginTop: 30,
     marginLeft: 80,
   },
 
   tutup: {
-    fontFamily: "Nunito",
+    fontFamily: "Poppins",
     fontSize: 18,
-    fontWeight: "bold",
     margin: 10,
   },
 });
