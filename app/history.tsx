@@ -1,9 +1,9 @@
-import { Modal, StyleSheet, TouchableOpacity, Dimensions } from "react-native";
+import { Modal, StyleSheet } from "react-native";
 import { useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import DatePicker from "react-native-modern-datepicker";
-import { Text, View } from "../components/Themed";
+import { Text, TouchableOpacity, View } from "../components/Themed";
 import { Ionicons } from "@expo/vector-icons";
 import { useColorScheme } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
@@ -19,115 +19,121 @@ export default function TabTwoScreen() {
   }
   const colorScheme = useColorScheme();
   return (
-    <View lightColor="#f5f5f5" darkColor="#2f3254" style={styles.container}>
+    <View style={styles.container}>
       <View
-        lightColor="#f5f5f5"
-        darkColor="#2f3254"
         style={[
-          styles.boks,
+          styles.box,
           { borderColor: colorScheme === "dark" ? "#6455cd" : "#0d3876" },
         ]}
       >
-        <TouchableOpacity>
-          <Link href="/">
-            <View lightColor="#e2e8f3" darkColor="#fff" style={styles.back}>
+        <View style={styles.header}>
+          <TouchableOpacity
+            lightColor="#e2e8f3"
+            darkColor="#fff"
+            style={styles.button}
+          >
+            <Link href="/">
               <AntDesign
                 name="doubleleft"
                 size={24}
                 color={colorScheme === "dark" ? "#2f3254" : "#0d3876"}
-                style={styles.bek}
+              />
+            </Link>
+          </TouchableOpacity>
+          <View lightColor="#e2e8f3" darkColor="white" style={styles.history}>
+            <Text
+              lightColor="#0d3876"
+              darkColor="#2f3254"
+              style={styles.text_sm}
+            >
+              History
+            </Text>
+            <Ionicons
+              name="stats-chart-outline"
+              size={18}
+              color={colorScheme === "dark" ? "#2f3254" : "#0d3876"}
+            />
+          </View>
+        </View>
+        <View style={styles.calendar}>
+          <Text style={styles.text_md_bold}> Senin, {`\n`} 24 April 2023</Text>
+          <TouchableOpacity
+            lightColor="#e2e8f3"
+            darkColor="#fff"
+            style={styles.tombol}
+            onPress={handleOnPress}
+          >
+            <View
+              lightColor="#e2e8f3"
+              darkColor="#fff"
+              style={{ alignItems: "flex-end" }}
+            >
+              <MaterialCommunityIcons
+                name="calendar-cursor"
+                size={32}
+                color={colorScheme === "dark" ? "#2f3254" : "#0d3876"}
               />
             </View>
-          </Link>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={handleOnPress}>
-          <View lightColor="#e2e8f3" darkColor="#fff" style={styles.tombol}>
-            <Text lightColor="#0d3876" darkColor="#2f3254" style={styles.dor}>
-              Buka
+            <Text
+              lightColor="#0d3876"
+              darkColor="#2f3254"
+              style={styles.text_sm}
+            >
+              Buka kalender
             </Text>
-            <Text lightColor="#0d3876" darkColor="#2f3254" style={styles.buka}>
-              Kalender
-            </Text>
-            <MaterialCommunityIcons
-              name="calendar-cursor"
-              size={32}
-              color={colorScheme === "dark" ? "#2f3254" : "#0d3876"}
-              style={styles.kalender}
-            />
-            <Modal animationType="fade" transparent={true} visible={open}>
-              <View
-                lightColor="#f5f5f5"
-                darkColor="#2f3254"
-                style={styles.centeredView}
-              >
-                <View
-                  lightColor="#f5f5f5"
-                  darkColor="#fff"
-                  style={styles.modalView}
-                >
-                  <DatePicker
-                    mode="calendar"
-                    onSelectedChange={(date) => setSelectedDate(date)}
-                    options={{
-                      textHeaderColor: "#0d3876",
-                      textDefaultColor: "#0d3876",
-                      selectedTextColor: "#fff",
-                      mainColor: "#0d3876",
-                      defaultFont: "Poppins",
-                      textSecondaryColor: "#0d3876",
-                      headerFont: "PoppinsSemiBold",
-                    }}
-                  />
-                  <TouchableOpacity onPress={handleOnPress}>
-                    <Text
-                      lightColor="#0d3876"
-                      darkColor="#0d3876"
-                      style={styles.tutup}
-                    >
-                      Tutup
-                    </Text>
-                  </TouchableOpacity>
-                </View>
-              </View>
-            </Modal>
-          </View>
-        </TouchableOpacity>
-        <View lightColor="#e2e8f3" darkColor="white" style={styles.topbox}>
-          <Text lightColor="#0d3876" darkColor="#2f3254" style={styles.top}>
-            History
-          </Text>
-          <Ionicons
-            name="stats-chart-outline"
-            size={18}
-            color={colorScheme === "dark" ? "#2f3254" : "#0d3876"}
-          />
+          </TouchableOpacity>
         </View>
       </View>
-      <Text lightColor="#0d3876" darkColor="#fff" style={styles.akun}>
-        Hari ini, 24 April 2023
-      </Text>
+      <Modal animationType="fade" transparent={true} visible={open}>
+        <View
+          lightColor="#f5f5f5"
+          darkColor="#2f3254"
+          style={styles.centeredView}
+        >
+          <View lightColor="#fff" darkColor="#fff" style={styles.modalView}>
+            <DatePicker
+              mode="calendar"
+              onSelectedChange={(date) => setSelectedDate(date)}
+              options={{
+                textHeaderColor: "#0d3876",
+                textDefaultColor: "#0d3876",
+                selectedTextColor: "#fff",
+                mainColor: "#0d3876",
+                defaultFont: "Poppins",
+                textSecondaryColor: "#0d3876",
+                headerFont: "PoppinsSemiBold",
+              }}
+            />
+            <TouchableOpacity
+              lightColor="#f5f5f5"
+              darkColor="#fff"
+              style={styles.tutup}
+              onPress={handleOnPress}
+            >
+              <Text
+                lightColor="#0d3876"
+                darkColor="#0d3876"
+                style={styles.text_sm}
+              >
+                Tutup
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
       <View lightColor="#e0e7f2" darkColor="#303355" style={styles.kotak}>
-        <Text lightColor="#0d3876" darkColor="#fff" style={styles.stats}>
+        <Text
+          lightColor="#0d3876"
+          darkColor="#fff"
+          style={[
+            styles.text_md_bold,
+            {
+              margin: 20,
+            },
+          ]}
+        >
           Statistik
         </Text>
-        {/* <View lightColor="#0d3876" darkColor="#6455cd" style={styles.metan}>
-          <Text lightColor="#e2e8f3" darkColor="#fff" style={styles.ch4}>
-            {" "}
-            CH4{" "}
-          </Text>
-        </View>
-        <View lightColor="#e2e8f3" darkColor="#ed7756" style={styles.amonia}>
-          <Text lightColor="#0d3876" darkColor="#fff" style={styles.nh3}>
-            {" "}
-            NH3{" "}
-          </Text>
-        </View>
-        <View lightColor="#e2e8f3" darkColor="#96cdc2" style={styles.monok}>
-          <Text lightColor="#0d3876" darkColor="#fff" style={styles.co}>
-            {" "}
-            CO{" "}
-          </Text>
-        </View> */}
         <Card />
       </View>
       <StatusBar style="auto" />
@@ -141,76 +147,40 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 30,
   },
-  boks: {
-    height: 200,
+  box: {
     width: "100%",
     borderRadius: 10,
     marginTop: 35,
     borderWidth: 5,
-    paddingVertical: 10,
-    paddingHorizontal: 10,
+    padding: 20,
   },
-  tanggal: {
-    fontFamily: "Nunito",
-    fontSize: 17,
-    fontWeight: "bold",
-    position: "absolute",
-    top: 10,
-    left: 15,
-  },
-  tang: {
-    fontFamily: "Nunito",
-    fontSize: 17,
-    fontWeight: "bold",
-    position: "absolute",
-    top: 28,
-    left: 15,
-  },
-  back: {
-    height: 40,
-    width: 40,
-    borderRadius: 50,
-  },
-  bek: {
-    position: "absolute",
-    top: 8,
-    left: 7,
-  },
-  topbox: {
-    width: 150,
-    height: 30,
-    paddingHorizontal: 10,
-    borderRadius: 10,
-    alignItems: "center",
-    shadowColor: "#000000",
-    shadowOffset: {
-      width: 0,
-      height: 15,
-    },
-    shadowOpacity: 0.24,
-    shadowRadius: 17.43,
-    elevation: 21,
-    position: "absolute",
-    top: 2,
-    right: 10,
-    flexDirection: "row",
+  header: {
+    width: "100%",
     justifyContent: "space-between",
-    marginTop: 10,
+    alignItems: "center",
+    flexDirection: "row",
   },
-  top: {
-    fontSize: 15,
-    fontFamily: "PoppinsSemiBold",
+  button: {
+    width: 40,
+    height: 40,
+    borderRadius: 40,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  history: {
+    height: 40,
+    width: 100,
+    borderRadius: 10,
+    paddingHorizontal: 10,
+    justifyContent: "space-between",
+    alignItems: "center",
+    flexDirection: "row",
   },
   tombol: {
     width: 100,
     height: 100,
-    position: "absolute",
-    right: 10,
-    top: 30,
     borderRadius: 10,
-    paddingHorizontal: 10,
-    justifyContent: "center",
-    alignItems: "flex-start",
+    padding: 10,
     shadowColor: "#000000",
     shadowOffset: {
       width: 0,
@@ -219,33 +189,11 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.24,
     shadowRadius: 17.43,
     elevation: 21,
-  },
-  dor: {
-    fontFamily: "Nunito",
-    fontSize: 15,
-    fontWeight: "bold",
-    position: "absolute",
-    bottom: 25,
-    left: 30,
-  },
-  buka: {
-    fontSize: 15,
-    fontFamily: "Nunito",
-    fontWeight: "bold",
-    position: "absolute",
-    bottom: 8,
-    left: 20,
-  },
-  kalender: {
-    position: "absolute",
-    top: 7,
-    right: 5,
   },
   centeredView: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 22,
   },
   modalView: {
     margin: 20,
@@ -262,21 +210,19 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5,
   },
-
-  akun: {
-    fontFamily: "PoppinsSemiBold",
-    fontSize: 25,
-    marginTop: 30,
-    marginLeft: 80,
-  },
-  kotak: {
-    height: 500,
-    flexDirection: "column",
-    paddingLeft: 11,
+  tutup: {
+    width: "50%",
+    height: 50,
     borderRadius: 10,
-    gap: 5,
+    borderColor: "#0d3876",
+    borderWidth: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+
+  kotak: {
+    borderRadius: 10,
     marginTop: 20,
-    paddingTop: 40,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -285,88 +231,24 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.58,
     shadowRadius: 16.0,
     elevation: 24,
-    marginBottom: 15,
   },
-  stats: {
-    fontFamily: "Nunito",
-    fontSize: 20,
-    fontWeight: "bold",
-    position: "absolute",
-    top: 15,
-    left: 16,
-  },
-  metan: {
-    height: 120,
-    width: 350,
-    borderRadius: 15,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 8,
-    },
-    shadowOpacity: 0.46,
-    shadowRadius: 11.14,
-
-    elevation: 17,
-    marginTop: 20,
-  },
-  ch4: {
-    fontSize: 20,
-    fontFamily: "Nunito",
-    fontWeight: "bold",
-    position: "absolute",
-    top: 15,
-    right: 15,
-  },
-  nh3: {
-    fontSize: 20,
-    fontFamily: "Nunito",
-    fontWeight: "bold",
-    position: "absolute",
-    top: 15,
-    right: 15,
-  },
-  amonia: {
-    height: 120,
-    width: 350,
-    borderRadius: 15,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 8,
-    },
-    shadowOpacity: 0.46,
-    shadowRadius: 11.14,
-
-    elevation: 17,
-    marginTop: 20,
-  },
-  monok: {
-    height: 120,
-    width: 350,
-    borderRadius: 15,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 8,
-    },
-    shadowOpacity: 0.46,
-    shadowRadius: 11.14,
-
-    elevation: 17,
-    marginTop: 20,
-  },
-  co: {
-    fontSize: 20,
-    fontFamily: "Nunito",
-    fontWeight: "bold",
-    position: "absolute",
-    top: 15,
-    right: 15,
-  },
-  tutup: {
+  text_sm: {
     fontFamily: "Poppins",
-    fontSize: 18,
-    margin: 10,
+    fontSize: 15,
+  },
+  icon: {
+    width: 50,
+    height: 50,
+  },
+  calendar: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    marginTop: 20,
+  },
+  text_md_bold: {
+    fontFamily: "PoppinsSemiBold",
+    fontSize: 20,
+    fontWeight: "bold",
   },
 });

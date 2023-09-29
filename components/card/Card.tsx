@@ -26,7 +26,7 @@ const DATA = [
 export default function Card() {
   const scrollX = React.useRef(new Animated.Value(0)).current;
   return (
-    <View>
+    <>
       <Animated.FlatList
         data={DATA}
         keyExtractor={(item) => item.key}
@@ -38,7 +38,11 @@ export default function Card() {
           { useNativeDriver: true }
         )}
         renderItem={({ item }) => (
-          <View style={Style.container}>
+          <View
+            lightColor="#e0e7f2"
+            darkColor="#303355"
+            style={Style.container}
+          >
             <View style={Style.Card}>
               <Text>
                 {item.title} {item.unit}
@@ -47,16 +51,18 @@ export default function Card() {
           </View>
         )}
       />
-    </View>
+    </>
   );
 }
 
 const Style = StyleSheet.create({
   container: {
-    paddingHorizontal: 15,
+    borderRadius: 10,
+    paddingHorizontal: 20,
+    marginBottom: 20,
   },
   Card: {
-    width: width * 0.8,
+    width: width - 80,
     height: height / 3,
     paddingHorizontal: 10,
     paddingVertical: 10,
