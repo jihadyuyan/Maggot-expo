@@ -9,6 +9,10 @@ import { useColorScheme } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import { Link } from "expo-router";
+<<<<<<< HEAD
+=======
+import Card from "../components/card/Card";
+>>>>>>> 21142bcb1c1963944efd2c140a8c2adcced23fbc
 
 export default function TabTwoScreen() {
   const [selectedDate, setSelectedDate] = useState("");
@@ -105,6 +109,33 @@ export default function TabTwoScreen() {
       <Text lightColor="#0d3876" darkColor="#fff" style={styles.akun}>
         Hari ini, 24 April 2023
       </Text>
+<<<<<<< HEAD
+=======
+      <View lightColor="#e0e7f2" darkColor="#303355" style={styles.kotak}>
+        <Text lightColor="#0d3876" darkColor="#fff" style={styles.stats}>
+          Statistik
+        </Text>
+        {/* <View lightColor="#0d3876" darkColor="#6455cd" style={styles.metan}>
+          <Text lightColor="#e2e8f3" darkColor="#fff" style={styles.ch4}>
+            {" "}
+            CH4{" "}
+          </Text>
+        </View>
+        <View lightColor="#e2e8f3" darkColor="#ed7756" style={styles.amonia}>
+          <Text lightColor="#0d3876" darkColor="#fff" style={styles.nh3}>
+            {" "}
+            NH3{" "}
+          </Text>
+        </View>
+        <View lightColor="#e2e8f3" darkColor="#96cdc2" style={styles.monok}>
+          <Text lightColor="#0d3876" darkColor="#fff" style={styles.co}>
+            {" "}
+            CO{" "}
+          </Text>
+        </View> */}
+        <Card />
+      </View>
+>>>>>>> 21142bcb1c1963944efd2c140a8c2adcced23fbc
       <StatusBar style="auto" />
     </View>
   );
@@ -244,7 +275,105 @@ const styles = StyleSheet.create({
     marginTop: 30,
     marginLeft: 80,
   },
+<<<<<<< HEAD
 
+=======
+  kotak: {
+    height: 500,
+    flexDirection: "column",
+    paddingLeft: 11,
+    borderRadius: 10,
+    gap: 5,
+    marginTop: 20,
+    paddingTop: 40,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 12,
+    },
+    shadowOpacity: 0.58,
+    shadowRadius: 16.0,
+    elevation: 24,
+    marginBottom: 15,
+  },
+  stats: {
+    fontFamily: "Nunito",
+    fontSize: 20,
+    fontWeight: "bold",
+    position: "absolute",
+    top: 15,
+    left: 16,
+  },
+  metan: {
+    height: 120,
+    width: 350,
+    borderRadius: 15,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 8,
+    },
+    shadowOpacity: 0.46,
+    shadowRadius: 11.14,
+
+    elevation: 17,
+    marginTop: 20,
+  },
+  ch4: {
+    fontSize: 20,
+    fontFamily: "Nunito",
+    fontWeight: "bold",
+    position: "absolute",
+    top: 15,
+    right: 15,
+  },
+  nh3: {
+    fontSize: 20,
+    fontFamily: "Nunito",
+    fontWeight: "bold",
+    position: "absolute",
+    top: 15,
+    right: 15,
+  },
+  amonia: {
+    height: 120,
+    width: 350,
+    borderRadius: 15,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 8,
+    },
+    shadowOpacity: 0.46,
+    shadowRadius: 11.14,
+
+    elevation: 17,
+    marginTop: 20,
+  },
+  monok: {
+    height: 120,
+    width: 350,
+    borderRadius: 15,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 8,
+    },
+    shadowOpacity: 0.46,
+    shadowRadius: 11.14,
+
+    elevation: 17,
+    marginTop: 20,
+  },
+  co: {
+    fontSize: 20,
+    fontFamily: "Nunito",
+    fontWeight: "bold",
+    position: "absolute",
+    top: 15,
+    right: 15,
+  },
+>>>>>>> 21142bcb1c1963944efd2c140a8c2adcced23fbc
   tutup: {
     fontFamily: "Poppins",
     fontSize: 18,
