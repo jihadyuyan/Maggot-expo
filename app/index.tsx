@@ -174,8 +174,8 @@ const styles = StyleSheet.create({
   kotaklogo: {
     justifyContent: "center",
     alignItems: "center",
-    height: 40,
-    width: 40,
+    height: 50,
+    width: 50,
     borderRadius: 10,
   },
   text_sm: {
