@@ -9,10 +9,7 @@ import { useColorScheme } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import { Link } from "expo-router";
-<<<<<<< HEAD
-=======
 import Card from "../components/card/Card";
->>>>>>> 21142bcb1c1963944efd2c140a8c2adcced23fbc
 
 export default function TabTwoScreen() {
   const [selectedDate, setSelectedDate] = useState("");
@@ -109,8 +106,6 @@ export default function TabTwoScreen() {
       <Text lightColor="#0d3876" darkColor="#fff" style={styles.akun}>
         Hari ini, 24 April 2023
       </Text>
-<<<<<<< HEAD
-=======
       <View lightColor="#e0e7f2" darkColor="#303355" style={styles.kotak}>
         <Text lightColor="#0d3876" darkColor="#fff" style={styles.stats}>
           Statistik
@@ -135,7 +130,6 @@ export default function TabTwoScreen() {
         </View> */}
         <Card />
       </View>
->>>>>>> 21142bcb1c1963944efd2c140a8c2adcced23fbc
       <StatusBar style="auto" />
     </View>
   );
@@ -275,9 +269,6 @@ const styles = StyleSheet.create({
     marginTop: 30,
     marginLeft: 80,
   },
-<<<<<<< HEAD
-
-=======
   kotak: {
     height: 500,
     flexDirection: "column",
@@ -373,7 +364,6 @@ const styles = StyleSheet.create({
     top: 15,
     right: 15,
   },
->>>>>>> 21142bcb1c1963944efd2c140a8c2adcced23fbc
   tutup: {
     fontFamily: "Poppins",
     fontSize: 18,
