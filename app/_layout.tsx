@@ -23,6 +23,7 @@ export default function RootLayout() {
   const [loaded, error] = useFonts({
     Poppins: require("../assets/fonts/Poppins-Regular.ttf"),
     PoppinsSemiBold: require("../assets/fonts/Poppins-SemiBold.ttf"),
+    PoppinsRegular: require("../assets/fonts/Poppins-Regular.ttf"),
 
     ...FontAwesome.font,
   });
