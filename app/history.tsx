@@ -28,7 +28,7 @@ export default function TabTwoScreen() {
       >
         <View style={styles.header}>
           <TouchableOpacity
-            lightColor="#e2e8f3"
+            lightColor="#0d3876"
             darkColor="#fff"
             style={styles.button}
           >
@@ -36,49 +36,41 @@ export default function TabTwoScreen() {
               <AntDesign
                 name="doubleleft"
                 size={24}
-                color={colorScheme === "dark" ? "#2f3254" : "#0d3876"}
+                color={colorScheme === "dark" ? "#2f3254" : "#fff"}
               />
             </Link>
           </TouchableOpacity>
-          <View lightColor="#e2e8f3" darkColor="white" style={styles.history}>
-            <Text
-              lightColor="#0d3876"
-              darkColor="#2f3254"
-              style={styles.text_sm}
-            >
+          <View lightColor="#0d3876" darkColor="white" style={styles.history}>
+            <Text lightColor="#fff" darkColor="#2f3254" style={styles.text_sm}>
               History
             </Text>
             <Ionicons
               name="stats-chart-outline"
               size={18}
-              color={colorScheme === "dark" ? "#2f3254" : "#0d3876"}
+              color={colorScheme === "dark" ? "#2f3254" : "#fff"}
             />
           </View>
         </View>
         <View style={styles.calendar}>
           <Text style={styles.text_md_bold}> Senin, {`\n`} 24 April 2023</Text>
           <TouchableOpacity
-            lightColor="#e2e8f3"
+            lightColor="#0d3876"
             darkColor="#fff"
             style={styles.tombol}
             onPress={handleOnPress}
           >
             <View
-              lightColor="#e2e8f3"
+              lightColor="#0d3876"
               darkColor="#fff"
               style={{ alignItems: "flex-end" }}
             >
               <MaterialCommunityIcons
                 name="calendar-cursor"
                 size={32}
-                color={colorScheme === "dark" ? "#2f3254" : "#0d3876"}
+                color={colorScheme === "dark" ? "#2f3254" : "#fff"}
               />
             </View>
-            <Text
-              lightColor="#0d3876"
-              darkColor="#2f3254"
-              style={styles.text_sm}
-            >
+            <Text lightColor="#fff" darkColor="#2f3254" style={styles.text_sm}>
               Buka kalender
             </Text>
           </TouchableOpacity>
@@ -152,7 +144,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginTop: 35,
     borderWidth: 5,
-    padding: 20,
+    padding: 10,
   },
   header: {
     width: "100%",

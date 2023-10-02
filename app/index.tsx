@@ -94,27 +94,26 @@ export default function TabOneScreen() {
             >
               <Text
                 lightColor="#0d3876"
-                darkColor="#fff"
+                darkColor="#2f3254"
                 style={styles.text_sm_bold}
               >
                 Buka {`\n`}History
               </Text>
               <Ionicons
                 name="stats-chart-outline"
-                size={24}
-                color={colorScheme === "dark" ? "#fff" : "#0d3876"}
+                size={30}
+                color={colorScheme === "dark" ? "#2f3254" : "#0d3876"}
               />
             </View>
-
             <TouchableOpacity
               lightColor="#0d3876"
-              darkColor="#fff"
+              darkColor="#2f3254"
               style={styles.icon}
             >
               <Link href="/history">
                 <AntDesign
                   name="doubleright"
-                  size={25}
+                  size={28}
                   color={colorScheme === "dark" ? "#96cdc2" : "#fff"}
                 />
               </Link>
@@ -182,7 +181,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
   },
   text_sm_bold: {
-    fontSize: 15,
+    fontSize: 16,
     fontFamily: "PoppinsSemiBold",
   },
   tangandaun: {
@@ -235,6 +234,12 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     justifyContent: "center",
     alignItems: "center",
+  },
+  text_link: {
+    fontFamily: "PoppinsSemiBold",
+    fontSize: 12,
+    color: "#fff",
+    width: 100,
   },
   slogan: {
     width: "100%",
