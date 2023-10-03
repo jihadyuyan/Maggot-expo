@@ -126,13 +126,7 @@ export default function TabTwoScreen() {
         >
           Statistik
         </Text>
-        <Card
-          title="GAS AMONIA"
-          lightcolor="#0d3876"
-          darkcolor="#6455cd"
-          lightcolortext="#f5f5f5"
-          darkcolortext="#f5f5f5"
-        />
+        <Card />
       </View>
       <StatusBar style="auto" />
     </View>

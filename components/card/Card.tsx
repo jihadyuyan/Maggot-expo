@@ -9,31 +9,30 @@ const DATA = [
   {
     key: "12345",
     title: "GAS AMONIA",
+    lightcolor: "#0d3876",
+    darkcolor: "#6455cd",
+    LightTextColor: "#f5f5f5",
+    DarkTextColor: "#f5f5f5",
   },
   {
     key: "66",
     title: "GAS METANA",
+    lightcolor: "#0d3876",
+    darkcolor: "#ed7756",
+    LightTextColor: "#f5f5f5",
+    DarkTextColor: "#f5f5f5",
   },
   {
     key: "77",
     title: "GAS KARBON MONOKSIDA",
+    LightTextColor: "#0d3876",
+    DarkTextColor: "#2f3254",
+    lightcolor: "#e2e8f3",
+    darkcolor: "#96cdc2",
   },
 ];
-type CardProps = {
-  title: string;
-  lightcolor?: string;
-  darkcolor?: string;
-  lightcolortext?: string;
-  darkcolortext?: string;
-};
 
-export default function Card({
-  title,
-  lightcolor,
-  lightcolortext,
-  darkcolortext,
-  darkcolor,
-}: CardProps) {
+export default function Card() {
   const scrollX = React.useRef(new Animated.Value(0)).current;
   return (
     <>
@@ -54,16 +53,16 @@ export default function Card({
             style={Style.container}
           >
             <View
-              lightColor={lightcolor}
-              darkColor={darkcolor}
+              lightColor={item.lightcolor}
+              darkColor={item.darkcolor}
               style={Style.Card}
             >
               <Text
-                lightColor={lightcolortext}
-                darkColor={darkcolortext}
+                lightColor={item.LightTextColor}
+                darkColor={item.DarkTextColor}
                 style={Style.Gas}
               >
-                {title}
+                {item.title}
               </Text>
             </View>
           </View>
