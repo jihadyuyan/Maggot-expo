@@ -8,22 +8,32 @@ const { height, width } = Dimensions.get("window");
 const DATA = [
   {
     key: "12345",
-    title: "Gas Amonia",
-    unit: "ppm",
+    title: "GAS AMONIA",
   },
   {
     key: "66",
-    title: "Gas Metana",
-    unit: "ppm",
+    title: "GAS METANA",
   },
   {
     key: "77",
-    title: "Gas Karbon Monoksida",
-    unit: "ppm",
+    title: "GAS KARBON MONOKSIDA",
   },
 ];
+type CardProps = {
+  title: string;
+  lightcolor?: string;
+  darkcolor?: string;
+  lightcolortext?: string;
+  darkcolortext?: string;
+};
 
-export default function Card() {
+export default function Card({
+  title,
+  lightcolor,
+  lightcolortext,
+  darkcolortext,
+  darkcolor,
+}: CardProps) {
   const scrollX = React.useRef(new Animated.Value(0)).current;
   return (
     <>
@@ -43,9 +53,17 @@ export default function Card() {
             darkColor="#303355"
             style={Style.container}
           >
-            <View style={Style.Card}>
-              <Text>
-                {item.title} {item.unit}
+            <View
+              lightColor={lightcolor}
+              darkColor={darkcolor}
+              style={Style.Card}
+            >
+              <Text
+                lightColor={lightcolortext}
+                darkColor={darkcolortext}
+                style={Style.Gas}
+              >
+                {title}
               </Text>
             </View>
           </View>
@@ -67,6 +85,17 @@ const Style = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 10,
     borderRadius: 10,
-    backgroundColor: "#d3d3d3",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 6,
+    },
+    shadowOpacity: 0.37,
+    shadowRadius: 7.49,
+    elevation: 12,
+  },
+  Gas: {
+    fontFamily: "PoppinsSemiBold",
+    fontSize: 15,
   },
 });

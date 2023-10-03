@@ -29,48 +29,48 @@ export default function TabTwoScreen() {
         <View style={styles.header}>
           <TouchableOpacity
             lightColor="#0d3876"
-            darkColor="#fff"
+            darkColor="#6455cd"
             style={styles.button}
           >
             <Link href="/">
               <AntDesign
                 name="doubleleft"
                 size={24}
-                color={colorScheme === "dark" ? "#2f3254" : "#fff"}
+                color={colorScheme === "dark" ? "white" : "#fff"}
               />
             </Link>
           </TouchableOpacity>
-          <View lightColor="#0d3876" darkColor="white" style={styles.history}>
-            <Text lightColor="#fff" darkColor="#2f3254" style={styles.text_sm}>
+          <View lightColor="#0d3876" darkColor="#6455cd" style={styles.history}>
+            <Text lightColor="#fff" darkColor="white" style={styles.text_sm}>
               History
             </Text>
             <Ionicons
               name="stats-chart-outline"
               size={18}
-              color={colorScheme === "dark" ? "#2f3254" : "#fff"}
+              color={colorScheme === "dark" ? "white" : "#fff"}
             />
           </View>
         </View>
         <View style={styles.calendar}>
-          <Text style={styles.text_md_bold}> Senin, {`\n`} 24 April 2023</Text>
+          <Text style={styles.text_cd_bold}> Senin, {`\n`} 24 April 2023</Text>
           <TouchableOpacity
             lightColor="#0d3876"
-            darkColor="#fff"
+            darkColor="#6455cd"
             style={styles.tombol}
             onPress={handleOnPress}
           >
             <View
               lightColor="#0d3876"
-              darkColor="#fff"
+              darkColor="#6455cd"
               style={{ alignItems: "flex-end" }}
             >
               <MaterialCommunityIcons
                 name="calendar-cursor"
                 size={32}
-                color={colorScheme === "dark" ? "#2f3254" : "#fff"}
+                color={colorScheme === "dark" ? "white" : "#fff"}
               />
             </View>
-            <Text lightColor="#fff" darkColor="#2f3254" style={styles.text_sm}>
+            <Text lightColor="#fff" darkColor="white" style={styles.text_sm}>
               Buka kalender
             </Text>
           </TouchableOpacity>
@@ -126,7 +126,13 @@ export default function TabTwoScreen() {
         >
           Statistik
         </Text>
-        <Card />
+        <Card
+          title="GAS AMONIA"
+          lightcolor="#0d3876"
+          darkcolor="#6455cd"
+          lightcolortext="#f5f5f5"
+          darkcolortext="#f5f5f5"
+        />
       </View>
       <StatusBar style="auto" />
     </View>
@@ -144,7 +150,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginTop: 35,
     borderWidth: 5,
-    padding: 10,
+    padding: 15,
   },
   header: {
     width: "100%",
@@ -213,8 +219,8 @@ const styles = StyleSheet.create({
   },
 
   kotak: {
-    borderRadius: 10,
-    marginTop: 20,
+    borderRadius: 5,
+    marginTop: 50,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -225,7 +231,7 @@ const styles = StyleSheet.create({
     elevation: 24,
   },
   text_sm: {
-    fontFamily: "Poppins",
+    fontFamily: "PoppinsSemiBold",
     fontSize: 15,
   },
   icon: {
@@ -234,13 +240,16 @@ const styles = StyleSheet.create({
   },
   calendar: {
     flexDirection: "row",
-    alignItems: "center",
+    alignItems: "flex-end",
     justifyContent: "space-between",
     marginTop: 20,
   },
   text_md_bold: {
     fontFamily: "PoppinsSemiBold",
     fontSize: 20,
-    fontWeight: "bold",
+  },
+  text_cd_bold: {
+    fontFamily: "PoppinsSemiBold",
+    fontSize: 17,
   },
 });
