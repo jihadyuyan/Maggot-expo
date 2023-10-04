@@ -1,6 +1,7 @@
 import { Animated, Dimensions, FlatList } from "react-native";
 import { StyleSheet } from "react-native";
 import { Text, View } from "../Themed";
+import { LineChart } from "react-native-chart-kit";
 import React from "react";
 
 const { height, width } = Dimensions.get("window");
@@ -64,6 +65,65 @@ export default function Card() {
               >
                 {item.title}
               </Text>
+              <View>
+                <LineChart
+                  data={{
+                    labels: [
+                      "00:00",
+                      "02:00",
+                      "04:00",
+                      "06:00",
+                      "08:00",
+                      "10:00",
+                      "12:00",
+                      "14:00",
+                      "16:00",
+                      "18:00",
+                      "20:00",
+                      "22:00",
+                    ],
+                    datasets: [
+                      {
+                        data: [
+                          Math.random() * 100,
+                          Math.random() * 100,
+                          Math.random() * 100,
+                          Math.random() * 100,
+                          Math.random() * 100,
+                          Math.random() * 100,
+                        ],
+                      },
+                    ],
+                  }}
+                  width={Dimensions.get("window").width} // from react-native
+                  height={220}
+                  yAxisLabel="$"
+                  yAxisSuffix="k"
+                  yAxisInterval={1} // optional, defaults to 1
+                  chartConfig={{
+                    backgroundColor: "#6455cd",
+                    backgroundGradientFrom: "#fb8c00",
+                    backgroundGradientTo: "#ffa726",
+                    decimalPlaces: 2, // optional, defaults to 2dp
+                    color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+                    labelColor: (opacity = 1) =>
+                      `rgba(255, 255, 255, ${opacity})`,
+                    style: {
+                      borderRadius: 16,
+                    },
+                    propsForDots: {
+                      r: "6",
+                      strokeWidth: "2",
+                      stroke: "#ffa726",
+                    },
+                  }}
+                  bezier
+                  style={{
+                    marginVertical: 8,
+                    borderRadius: 16,
+                  }}
+                />
+              </View>
             </View>
           </View>
         )}
