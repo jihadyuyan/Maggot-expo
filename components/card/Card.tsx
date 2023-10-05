@@ -95,25 +95,22 @@ export default function Card() {
                       },
                     ],
                   }}
-                  width={Dimensions.get("window").width} // from react-native
-                  height={220}
-                  yAxisLabel="$"
-                  yAxisSuffix="k"
+                  width={300} // from react-native
+                  height={200}
+                  yAxisSuffix="ppm"
                   yAxisInterval={1} // optional, defaults to 1
                   chartConfig={{
                     backgroundColor: "#6455cd",
                     backgroundGradientFrom: "#fb8c00",
                     backgroundGradientTo: "#ffa726",
-                    decimalPlaces: 2, // optional, defaults to 2dp
+                    decimalPlaces: 2,
                     color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
                     labelColor: (opacity = 1) =>
                       `rgba(255, 255, 255, ${opacity})`,
-                    style: {
-                      borderRadius: 16,
-                    },
+                    style: {},
                     propsForDots: {
                       r: "6",
-                      strokeWidth: "2",
+                      strokeWidth: "25",
                       stroke: "#ffa726",
                     },
                   }}

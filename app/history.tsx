@@ -9,6 +9,7 @@ import { useColorScheme } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import { Link } from "expo-router";
+import { Entypo } from "@expo/vector-icons";
 import Card from "../components/card/Card";
 
 export default function TabTwoScreen() {
@@ -126,6 +127,12 @@ export default function TabTwoScreen() {
         >
           Statistik
         </Text>
+        <Entypo
+          name="arrow-right"
+          size={38}
+          style={styles.swipe}
+          color={colorScheme === "dark" ? "#f5f5f5" : "#fff"}
+        />
         <Card />
       </View>
       <StatusBar style="auto" />
@@ -211,7 +218,11 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-
+  swipe: {
+    position: "absolute",
+    top: 10,
+    right: 18,
+  },
   kotak: {
     borderRadius: 5,
     marginTop: 50,
