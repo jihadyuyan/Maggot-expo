@@ -1,7 +1,13 @@
-import { Animated, Dimensions, FlatList } from "react-native";
+import {
+  Animated,
+  Dimensions,
+  FlatList,
+  SafeAreaView,
+  ScrollView,
+} from "react-native";
 import { StyleSheet } from "react-native";
 import { Text, View } from "../Themed";
-import { LineChart } from "react-native-chart-kit";
+import { BarChart } from "react-native-chart-kit";
 import React from "react";
 
 const { height, width } = Dimensions.get("window");
@@ -65,62 +71,51 @@ export default function Card() {
               >
                 {item.title}
               </Text>
-              <View>
-                <LineChart
-                  data={{
-                    labels: [
-                      "00:00",
-                      "02:00",
-                      "04:00",
-                      "06:00",
-                      "08:00",
-                      "10:00",
-                      "12:00",
-                      "14:00",
-                      "16:00",
-                      "18:00",
-                      "20:00",
-                      "22:00",
-                    ],
-                    datasets: [
-                      {
-                        data: [
-                          Math.random() * 100,
-                          Math.random() * 100,
-                          Math.random() * 100,
-                          Math.random() * 100,
-                          Math.random() * 100,
-                          Math.random() * 100,
-                        ],
-                      },
-                    ],
-                  }}
-                  width={300} // from react-native
-                  height={200}
-                  yAxisSuffix="ppm"
-                  yAxisInterval={1} // optional, defaults to 1
-                  chartConfig={{
-                    backgroundColor: "#6455cd",
-                    backgroundGradientFrom: "#fb8c00",
-                    backgroundGradientTo: "#ffa726",
-                    decimalPlaces: 2,
-                    color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-                    labelColor: (opacity = 1) =>
-                      `rgba(255, 255, 255, ${opacity})`,
-                    style: {},
-                    propsForDots: {
-                      r: "6",
-                      strokeWidth: "25",
-                      stroke: "#ffa726",
+              <BarChart
+                data={{
+                  labels: [
+                    "00:00",
+                    "02:00",
+                    "04:00",
+                    "06:00",
+                    "08:00",
+                    "10:00",
+                    "12:00",
+                    "14:00",
+                    "16:00",
+                    "18:00",
+                    "20:00",
+                    "22:00",
+                  ],
+                  datasets: [
+                    {
+                      data: [0, 8, 25, 50, 100, 300],
                     },
-                  }}
-                  bezier
-                  style={{
-                    marginVertical: 8,
+                  ],
+                }}
+                width={Dimensions.get("window").width - 100}
+                height={300}
+                verticalLabelRotation={90}
+                yAxisSuffix={"ppm"}
+                yAxisLabel={""}
+                chartConfig={{
+                  backgroundColor: "#f5f5f5",
+                  backgroundGradientFrom: "#6455cd",
+                  backgroundGradientTo: "#6455cd",
+                  decimalPlaces: 0,
+
+                  color: (opacity = 5) => `rgba(255, 255, 255, ${opacity})`,
+                  style: {
                     borderRadius: 16,
-                  }}
-                />
-              </View>
+                  },
+                }}
+                style={
+                  {
+                    // borderRadius: 5,
+                    // padding: 5,
+                  }
+                }
+              />
             </View>
           </View>
         )}
@@ -137,8 +132,10 @@ const Style = StyleSheet.create({
   },
   Card: {
     width: width - 80,
-    height: height / 3,
-    paddingHorizontal: 10,
+    height: height / 2,
+    // paddingHorizontal: 10,
+    justifyContent: "center",
+    alignItems: "center",
     paddingVertical: 10,
     borderRadius: 10,
     shadowColor: "#000",
