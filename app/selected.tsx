@@ -24,7 +24,7 @@ export default function selected() {
             <Text style={styles.text_regular}>Kembali Ke Kalender</Text>
           </Link>
         </TouchableOpacity>
-        <ScrollView style={styles.geser}>
+        <ScrollView>
           <Text
             lightColor="#0d3876"
             darkColor="#6455cd"
