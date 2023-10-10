@@ -247,7 +247,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   tagline: {
-    fontSize: 17,
+    fontSize: 13,
     fontFamily: "Poppins",
   },
 });

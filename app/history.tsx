@@ -11,10 +11,12 @@ import { AntDesign } from "@expo/vector-icons";
 import { Link } from "expo-router";
 import { Entypo } from "@expo/vector-icons";
 import Card from "../components/card/Card";
+import { useNavigation } from "expo-router";
 
 export default function TabTwoScreen() {
   const [selectedDate, setSelectedDate] = useState("");
   const [open, setOpen] = useState(false);
+  const navigation = useNavigation();
   function handleOnPress() {
     setOpen(!open);
   }
@@ -97,44 +99,60 @@ export default function TabTwoScreen() {
                 headerFont: "PoppinsSemiBold",
               }}
             />
-            <TouchableOpacity
-              lightColor="#f5f5f5"
-              darkColor="#fff"
-              style={styles.tutup}
-              onPress={handleOnPress}
-            >
-              <Text
-                lightColor="#0d3876"
-                darkColor="#0d3876"
-                style={styles.text_sm}
+            <View style={styles.boxtutup}>
+              <TouchableOpacity
+                lightColor="#f5f5f5"
+                darkColor="#fff"
+                style={styles.tutup}
               >
-                Tutup
-              </Text>
-            </TouchableOpacity>
+                <Link href="/selected">
+                  <Text
+                    lightColor="#0d3876"
+                    darkColor="#0d3876"
+                    style={styles.text_sm}
+                  >
+                    Submit
+                  </Text>
+                </Link>
+              </TouchableOpacity>
+              <TouchableOpacity
+                lightColor="#f5f5f5"
+                darkColor="#fff"
+                style={styles.tutup}
+                onPress={handleOnPress}
+              >
+                <Text
+                  lightColor="#0d3876"
+                  darkColor="#0d3876"
+                  style={styles.text_sm}
+                >
+                  Tutup
+                </Text>
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
       </Modal>
-      <View lightColor="#e0e7f2" darkColor="#303355" style={styles.kotak}>
-        <Text
-          lightColor="#0d3876"
-          darkColor="#fff"
-          style={[
-            styles.text_md_bold,
-            {
-              margin: 20,
-            },
-          ]}
-        >
-          Statistik
-        </Text>
-        <Entypo
-          name="arrow-right"
-          size={38}
-          style={styles.swipe}
-          color={colorScheme === "dark" ? "#f5f5f5" : "#fff"}
-        />
-        <Card />
-      </View>
+      <Text
+        lightColor="#0d3876"
+        darkColor="#fff"
+        style={[
+          styles.text_md_bold,
+          {
+            margin: 20,
+          },
+        ]}
+      >
+        Statistik
+      </Text>
+      <Entypo
+        name="arrow-right"
+        size={38}
+        style={styles.swipe}
+        color={colorScheme === "dark" ? "#f5f5f5" : "#0d3876"}
+      />
+      <Card />
+      <Text style={styles.made}> "Made by Jejeyuyan"✌️</Text>
       <StatusBar style="auto" />
     </View>
   );
@@ -145,6 +163,8 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: 20,
     paddingVertical: 30,
+    justifyContent: "center",
+    alignItems: "center",
   },
   box: {
     width: "100%",
@@ -209,6 +229,12 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5,
   },
+  boxtutup: {
+    width: "100%",
+    flexDirection: "row",
+    gap: 10,
+    backgroundColor: "#fff",
+  },
   tutup: {
     width: "50%",
     height: 50,
@@ -220,8 +246,8 @@ const styles = StyleSheet.create({
   },
   swipe: {
     position: "absolute",
-    top: 10,
-    right: 18,
+    top: 280,
+    right: 50,
   },
   kotak: {
     borderRadius: 5,
@@ -256,5 +282,9 @@ const styles = StyleSheet.create({
   text_cd_bold: {
     fontFamily: "PoppinsSemiBold",
     fontSize: 17,
+  },
+  made: {
+    fontSize: 13,
+    fontFamily: "Poppins",
   },
 });

@@ -1,14 +1,8 @@
-import {
-  Animated,
-  Dimensions,
-  FlatList,
-  SafeAreaView,
-  ScrollView,
-} from "react-native";
+import { Animated, Dimensions, FlatList } from "react-native";
 import { StyleSheet } from "react-native";
 import { Text, View } from "../Themed";
-import { BarChart } from "react-native-chart-kit";
 import React from "react";
+import Grafik from "../Grafik";
 
 const { height, width } = Dimensions.get("window");
 
@@ -55,7 +49,7 @@ export default function Card() {
         )}
         renderItem={({ item }) => (
           <View
-            lightColor="#e0e7f2"
+            lightColor="#f5f5f5"
             darkColor="#303355"
             style={Style.container}
           >
@@ -71,51 +65,7 @@ export default function Card() {
               >
                 {item.title}
               </Text>
-              <BarChart
-                data={{
-                  labels: [
-                    "00:00",
-                    "02:00",
-                    "04:00",
-                    "06:00",
-                    "08:00",
-                    "10:00",
-                    "12:00",
-                    "14:00",
-                    "16:00",
-                    "18:00",
-                    "20:00",
-                    "22:00",
-                  ],
-                  datasets: [
-                    {
-                      data: [0, 8, 25, 50, 100, 300],
-                    },
-                  ],
-                }}
-                width={Dimensions.get("window").width - 100}
-                height={300}
-                verticalLabelRotation={90}
-                yAxisSuffix={"ppm"}
-                yAxisLabel={""}
-                chartConfig={{
-                  backgroundColor: "#f5f5f5",
-                  backgroundGradientFrom: "#6455cd",
-                  backgroundGradientTo: "#6455cd",
-                  decimalPlaces: 0,
-
-                  color: (opacity = 5) => `rgba(255, 255, 255, ${opacity})`,
-                  style: {
-                    borderRadius: 16,
-                  },
-                }}
-                style={
-                  {
-                    // borderRadius: 5,
-                    // padding: 5,
-                  }
-                }
-              />
+              <Grafik />
             </View>
           </View>
         )}
@@ -132,10 +82,10 @@ const Style = StyleSheet.create({
   },
   Card: {
     width: width - 80,
-    height: height / 2,
-    // paddingHorizontal: 10,
-    justifyContent: "center",
-    alignItems: "center",
+    height: height / 2.5,
+    paddingHorizontal: 10,
+    // justifyContent: "center",
+    // alignItems: "center",
     paddingVertical: 10,
     borderRadius: 10,
     shadowColor: "#000",
