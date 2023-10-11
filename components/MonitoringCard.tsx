@@ -27,7 +27,7 @@ const MonitoringCard = ({
           <Text lightColor={LightTextColor} style={Style.text_sm_bold}>
             {title}
           </Text>
-          <Entypo name="info-with-circle" size={20} color="#FFF" />
+          <Entypo name="info-with-circle" size={25} color="#FFF" />
         </View>
         <View
           lightColor={lightColor}
@@ -101,7 +101,7 @@ const Style = StyleSheet.create({
     alignItems: "flex-end",
   },
   text_sm_bold: {
-    fontSize: 15,
+    fontSize: 16,
     fontFamily: "PoppinsSemiBold",
   },
   text_sm: {

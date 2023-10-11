@@ -2,24 +2,34 @@ import { Animated, Dimensions, FlatList } from "react-native";
 import { StyleSheet } from "react-native";
 import { Text, View } from "../Themed";
 import React from "react";
+import Grafik from "../Grafik";
 
 const { height, width } = Dimensions.get("window");
 
 const DATA = [
   {
     key: "12345",
-    title: "Gas Amonia",
-    unit: "ppm",
+    title: "GAS AMONIA",
+    lightcolor: "#0d3876",
+    darkcolor: "#6455cd",
+    LightTextColor: "#f5f5f5",
+    DarkTextColor: "#f5f5f5",
   },
   {
     key: "66",
-    title: "Gas Metana",
-    unit: "ppm",
+    title: "GAS METANA",
+    lightcolor: "#0d3876",
+    darkcolor: "#ed7756",
+    LightTextColor: "#f5f5f5",
+    DarkTextColor: "#f5f5f5",
   },
   {
     key: "77",
-    title: "Gas Karbon Monoksida",
-    unit: "ppm",
+    title: "GAS KARBON MONOKSIDA",
+    LightTextColor: "#0d3876",
+    DarkTextColor: "#2f3254",
+    lightcolor: "#e2e8f3",
+    darkcolor: "#96cdc2",
   },
 ];
 
@@ -39,14 +49,23 @@ export default function Card() {
         )}
         renderItem={({ item }) => (
           <View
-            lightColor="#e0e7f2"
+            lightColor="#f5f5f5"
             darkColor="#303355"
             style={Style.container}
           >
-            <View style={Style.Card}>
-              <Text>
-                {item.title} {item.unit}
+            <View
+              lightColor={item.lightcolor}
+              darkColor={item.darkcolor}
+              style={Style.Card}
+            >
+              <Text
+                lightColor={item.LightTextColor}
+                darkColor={item.DarkTextColor}
+                style={Style.Gas}
+              >
+                {item.title}
               </Text>
+              <Grafik />
             </View>
           </View>
         )}
@@ -63,10 +82,23 @@ const Style = StyleSheet.create({
   },
   Card: {
     width: width - 80,
-    height: height / 3,
+    height: height / 2.5,
     paddingHorizontal: 10,
+    // justifyContent: "center",
+    // alignItems: "center",
     paddingVertical: 10,
     borderRadius: 10,
-    backgroundColor: "#d3d3d3",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 6,
+    },
+    shadowOpacity: 0.37,
+    shadowRadius: 7.49,
+    elevation: 12,
+  },
+  Gas: {
+    fontFamily: "PoppinsSemiBold",
+    fontSize: 15,
   },
 });
