@@ -1,9 +1,9 @@
-import { StyleSheet, TouchableOpacity, useColorScheme } from "react-native";
+import { StyleSheet, useColorScheme, Pressable } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
-import { Text, View } from "../components/Themed";
+import { Text, TouchableOpacity, View } from "../components/Themed";
 import { Link } from "expo-router";
 import { Header } from "../components/Header";
 import Status from "../components/Status";
@@ -80,51 +80,50 @@ export default function TabOneScreen() {
         <View style={styles.monitoring}>
           <MonitoringCard
             title="Gas Karbon Monoksida"
-            sub="CH4"
+            sub="CO"
             value={128}
             lightColor="#e2e8f3"
             darkColor="#ed7756"
             LightTextColor="#0d3876"
           />
-          <TouchableOpacity style={styles.button}>
-            <Link href="/history">
-              <View
-                lightColor="#e2e8f3"
-                darkColor="#96cdc2"
-                style={styles.kotakhistory}
+          <View lightColor="#e2e8f3" darkColor="#96cdc2" style={styles.button}>
+            <View
+              lightColor="#e2e8f3"
+              darkColor="#96cdc2"
+              style={styles.history}
+            >
+              <Text
+                lightColor="#0d3876"
+                darkColor="#fff"
+                style={styles.text_sm_bold}
               >
-                <View
-                  lightColor="#e2e8f3"
-                  darkColor="#96cdc2"
-                  style={styles.history}
-                >
-                  <Text
-                    lightColor="#0d3876"
-                    darkColor="#fff"
-                    style={styles.text_sm_bold}
-                  >
-                    Buka {`\n`}History
-                  </Text>
-                  <Ionicons
-                    name="stats-chart-outline"
-                    size={24}
-                    color={colorScheme === "dark" ? "#fff" : "#0d3876"}
-                  />
-                </View>
-                <View lightColor="#0d3876" darkColor="#fff" style={styles.icon}>
-                  <AntDesign
-                    name="doubleright"
-                    size={25}
-                    color={colorScheme === "dark" ? "#96cdc2" : "#fff"}
-                  />
-                </View>
-              </View>
-            </Link>
-          </TouchableOpacity>
+                Buka {`\n`}History
+              </Text>
+              <Ionicons
+                name="stats-chart-outline"
+                size={24}
+                color={colorScheme === "dark" ? "#fff" : "#0d3876"}
+              />
+            </View>
+
+            <TouchableOpacity
+              lightColor="#0d3876"
+              darkColor="#fff"
+              style={styles.icon}
+            >
+              <Link href="/history">
+                <AntDesign
+                  name="doubleright"
+                  size={25}
+                  color={colorScheme === "dark" ? "#96cdc2" : "#fff"}
+                />
+              </Link>
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
       <View lightColor="#f5f5f5" darkColor="#2f3254" style={styles.slogan}>
-        <Text lightColor="#0d3876" darkColor="#fff" style={styles.text_sm}>
+        <Text lightColor="#0d3876" darkColor="#fff" style={styles.tagline}>
           Keep Healthy and Happy 🍃
         </Text>
       </View>
@@ -205,21 +204,12 @@ const styles = StyleSheet.create({
     width: "100%",
     flexDirection: "row",
     justifyContent: "space-between",
-    paddingHorizontal: 10,
+    paddingHorizontal: 2,
     marginBottom: 33,
     marginTop: 20,
   },
   button: {
     width: "45%",
-    height: 150,
-  },
-  history: {
-    width: "100%",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    flexGrow: 1,
-  },
-  kotakhistory: {
     height: 150,
     borderRadius: 10,
     padding: 10,
@@ -232,10 +222,17 @@ const styles = StyleSheet.create({
     shadowRadius: 7.49,
     elevation: 12,
   },
+  history: {
+    width: "100%",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    flexGrow: 1,
+  },
+
   icon: {
     width: 50,
     height: 50,
-    borderRadius: 40,
+    borderRadius: 20,
     justifyContent: "center",
     alignItems: "center",
   },
@@ -243,5 +240,9 @@ const styles = StyleSheet.create({
     width: "100%",
     justifyContent: "center",
     alignItems: "center",
+  },
+  tagline: {
+    fontSize: 17,
+    fontFamily: "Poppins",
   },
 });

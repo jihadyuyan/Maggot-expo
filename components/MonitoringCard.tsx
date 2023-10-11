@@ -106,6 +106,6 @@ const Style = StyleSheet.create({
   },
   text_sm: {
     fontSize: 15,
-    fontFamily: "PoppinsRegular",
+    fontFamily: "Poppins",
   },
 });
