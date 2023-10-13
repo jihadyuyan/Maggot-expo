@@ -1,4 +1,4 @@
-import { StyleSheet, useColorScheme, Pressable } from "react-native";
+import { StyleSheet, useColorScheme } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";

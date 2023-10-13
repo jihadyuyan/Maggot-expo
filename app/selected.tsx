@@ -1,7 +1,6 @@
 import { Text, View, TouchableOpacity } from "../components/Themed";
 import Grafik from "../components/Grafik";
-import { StyleSheet, ScrollView } from "react-native";
-import { useColorScheme } from "react-native";
+import { StyleSheet, ScrollView, useColorScheme } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { Link } from "expo-router";
 

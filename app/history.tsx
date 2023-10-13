@@ -11,12 +11,10 @@ import { AntDesign } from "@expo/vector-icons";
 import { Link } from "expo-router";
 import { Entypo } from "@expo/vector-icons";
 import Card from "../components/card/Card";
-import { useNavigation } from "expo-router";
 
 export default function TabTwoScreen() {
   const [selectedDate, setSelectedDate] = useState("");
   const [open, setOpen] = useState(false);
-  const navigation = useNavigation();
   function handleOnPress() {
     setOpen(!open);
   }
@@ -152,7 +150,9 @@ export default function TabTwoScreen() {
         color={colorScheme === "dark" ? "#f5f5f5" : "#0d3876"}
       />
       <Card />
-      <Text style={styles.made}> "Made by Jejeyuyan"✌️</Text>
+      <View style={{ justifyContent: "center", alignItems: "center" }}>
+        <Text style={styles.made}> "Made by Jejeyuyan"✌️</Text>
+      </View>
       <StatusBar style="auto" />
     </View>
   );
@@ -161,17 +161,14 @@ export default function TabTwoScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 20,
     paddingVertical: 30,
-    justifyContent: "center",
-    alignItems: "center",
   },
   box: {
-    width: "100%",
     borderRadius: 10,
     marginTop: 35,
     borderWidth: 5,
     padding: 15,
+    marginHorizontal: 20,
   },
   header: {
     width: "100%",

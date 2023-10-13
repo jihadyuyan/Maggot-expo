@@ -65,7 +65,31 @@ export default function Card() {
               >
                 {item.title}
               </Text>
-              <Grafik />
+              {item.title === "GAS AMONIA" ? (
+                <Grafik
+                  darkcolor={item.darkcolor}
+                  lightcolor={item.lightcolor}
+                  lightTextColor={item.LightTextColor}
+                  darkTextColor={item.DarkTextColor}
+                  yaxis={[0, 20, 30, 40, 50, 80]}
+                />
+              ) : item.title === "GAS METANA" ? (
+                <Grafik
+                  darkcolor={item.darkcolor}
+                  lightcolor={item.lightcolor}
+                  lightTextColor={item.LightTextColor}
+                  darkTextColor={item.DarkTextColor}
+                  yaxis={[0, 20, 30, 40, 90, 60]}
+                />
+              ) : (
+                <Grafik
+                  darkcolor={item.darkcolor}
+                  lightcolor={item.lightcolor}
+                  lightTextColor={item.LightTextColor}
+                  darkTextColor={item.DarkTextColor}
+                  yaxis={[0, 20, 30, 40, 50, 60]}
+                />
+              )}
             </View>
           </View>
         )}
@@ -81,12 +105,10 @@ const Style = StyleSheet.create({
     marginBottom: 20,
   },
   Card: {
-    width: width - 80,
-    height: height / 2.5,
-    paddingHorizontal: 10,
-    // justifyContent: "center",
-    // alignItems: "center",
-    paddingVertical: 10,
+    width: width - 40,
+    justifyContent: "center",
+    alignItems: "center",
+    paddingVertical: 20,
     borderRadius: 10,
     shadowColor: "#000",
     shadowOffset: {
