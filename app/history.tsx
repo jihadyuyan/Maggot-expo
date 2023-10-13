@@ -131,24 +131,6 @@ export default function TabTwoScreen() {
           </View>
         </View>
       </Modal>
-      <Text
-        lightColor="#0d3876"
-        darkColor="#fff"
-        style={[
-          styles.text_md_bold,
-          {
-            margin: 20,
-          },
-        ]}
-      >
-        Statistik
-      </Text>
-      <Entypo
-        name="arrow-right"
-        size={38}
-        style={styles.swipe}
-        color={colorScheme === "dark" ? "#f5f5f5" : "#0d3876"}
-      />
       <Card />
       <View style={{ justifyContent: "center", alignItems: "center" }}>
         <Text style={styles.made}> "Made by Jejeyuyan"✌️</Text>

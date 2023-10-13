@@ -3,6 +3,7 @@ import { StyleSheet } from "react-native";
 import { Text, View } from "../Themed";
 import React from "react";
 import Grafik from "../Grafik";
+import Indicator from "./Indicator";
 
 const { width } = Dimensions.get("window");
 
@@ -37,6 +38,12 @@ export default function Card() {
   const scrollX = React.useRef(new Animated.Value(0)).current;
   return (
     <>
+      <View style={Style.heading}>
+        <Text lightColor="#0d3876" darkColor="#fff" style={Style.text_md_bold}>
+          Statistik
+        </Text>
+        <Indicator data={DATA} scrollX={scrollX} />
+      </View>
       <Animated.FlatList
         data={DATA}
         keyExtractor={(item) => item.key}
@@ -122,5 +129,15 @@ const Style = StyleSheet.create({
   Gas: {
     fontFamily: "PoppinsSemiBold",
     fontSize: 15,
+  },
+  text_md_bold: {
+    fontFamily: "PoppinsSemiBold",
+    fontSize: 20,
+  },
+  heading: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    margin: 20,
   },
 });
