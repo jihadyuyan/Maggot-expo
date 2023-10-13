@@ -1,10 +1,10 @@
-import { Animated, Dimensions, FlatList } from "react-native";
+import { Animated, Dimensions } from "react-native";
 import { StyleSheet } from "react-native";
 import { Text, View } from "../Themed";
 import React from "react";
 import Grafik from "../Grafik";
 
-const { height, width } = Dimensions.get("window");
+const { width } = Dimensions.get("window");
 
 const DATA = [
   {
@@ -71,7 +71,7 @@ export default function Card() {
                   lightcolor={item.lightcolor}
                   lightTextColor={item.LightTextColor}
                   darkTextColor={item.DarkTextColor}
-                  yaxis={[0, 20, 30, 40, 50, 80]}
+                  yaxis={[80, 20, 30, 40]}
                 />
               ) : item.title === "GAS METANA" ? (
                 <Grafik
