@@ -8,9 +8,26 @@ import { Link } from "expo-router";
 import { Header } from "../components/Header";
 import Status from "../components/Status";
 import MonitoringCard from "../components/MonitoringCard";
+import { useState, useEffect } from "react";
+import { collection, doc, onSnapshot } from "firebase/firestore";
+import { FIREBASE_DB } from "../config/firebaseConfig";
 
 export default function TabOneScreen() {
+  const [data, setData] = useState<any>();
   const colorScheme = useColorScheme();
+
+  useEffect(() => {
+    const ref = collection(FIREBASE_DB, "tools");
+    const Documents = doc(ref, "monitoring");
+
+    const unSubscribe = onSnapshot(Documents, (snapshot) => {
+      const data: any = snapshot.data();
+      setData(data);
+    });
+
+    return () => unSubscribe();
+  }, []);
+
   return (
     <View style={styles.container}>
       <Header title="Home" />
@@ -53,7 +70,15 @@ export default function TabOneScreen() {
             />
           </View>
         </View>
-        <Status />
+        {data?.fuzzy >= 0 && data?.fuzzy <= 50 && (
+          <Status color="green" label="Normal" />
+        )}
+        {data?.fuzzy > 50 && data?.fuzzy <= 100 && (
+          <Status color="orange" label="Bahaya" />
+        )}
+        {data?.fuzzy > 100 && data?.fuzzy <= 150 && (
+          <Status color="red" label="Sangat Bahaya" />
+        )}
       </View>
       <Text lightColor="#0d3876" darkColor="#fff" style={styles.title}>
         Monitoring
@@ -63,7 +88,7 @@ export default function TabOneScreen() {
           <MonitoringCard
             title="Gas Amonia"
             sub="NH3"
-            value={128}
+            value={data?.amonia}
             lightColor="#0d3876"
             darkColor="#6455cd"
             LightTextColor="#fff"
@@ -71,7 +96,7 @@ export default function TabOneScreen() {
           <MonitoringCard
             title="Gas Metana"
             sub="CH4"
-            value={128}
+            value={data?.metana}
             lightColor="#e2e8f3"
             darkColor="#ed7756"
             LightTextColor="#0d3876"
@@ -81,7 +106,7 @@ export default function TabOneScreen() {
           <MonitoringCard
             title="Gas Karbon Monoksida"
             sub="CO"
-            value={128}
+            value={data?.karbonmonoksida}
             lightColor="#e2e8f3"
             darkColor="#ed7756"
             LightTextColor="#0d3876"
