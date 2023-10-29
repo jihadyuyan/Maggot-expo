@@ -51,7 +51,6 @@ function RootLayoutNav() {
         <Stack>
           <Stack.Screen name="index" options={{ headerShown: false }} />
           <Stack.Screen name="history" options={{ headerShown: false }} />
-          <Stack.Screen name="selected" options={{ headerShown: false }} />
         </Stack>
       </ThemeProvider>
     </>
