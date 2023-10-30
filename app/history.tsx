@@ -1,24 +1,57 @@
-import { Modal, StyleSheet } from "react-native";
-import { useState } from "react";
+import { Modal, StyleSheet, useColorScheme } from "react-native";
 import { StatusBar } from "expo-status-bar";
-import React from "react";
-import DatePicker from "react-native-modern-datepicker";
+import DatePicker, { getToday } from "react-native-modern-datepicker";
 import { Text, TouchableOpacity, View } from "../components/Themed";
-import { Ionicons } from "@expo/vector-icons";
-import { useColorScheme } from "react-native";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { AntDesign } from "@expo/vector-icons";
+import {
+  Ionicons,
+  AntDesign,
+  MaterialCommunityIcons,
+} from "@expo/vector-icons";
 import { Link } from "expo-router";
-import { Entypo } from "@expo/vector-icons";
 import Card from "../components/card/Card";
+
+import { useEffect, useState } from "react";
+import {
+  collection,
+  onSnapshot,
+  orderBy,
+  query,
+  where,
+} from "firebase/firestore";
+import { FIREBASE_DB } from "../config/firebaseConfig";
 
 export default function TabTwoScreen() {
   const [selectedDate, setSelectedDate] = useState("");
+  const [data, setData] = useState<any[]>();
   const [open, setOpen] = useState(false);
   function handleOnPress() {
     setOpen(!open);
   }
+
   const colorScheme = useColorScheme();
+
+  useEffect(() => {
+    const Ref = collection(FIREBASE_DB, "logging");
+    const Query = query(
+      Ref,
+      orderBy("jam", "asc"),
+      where("tanggal", "==", selectedDate)
+    );
+
+    const unSubscribe = onSnapshot(Query, (snapshot) => {
+      const data: any[] = snapshot.docs.map((doc) => {
+        const data = doc.data();
+        return {
+          ...data,
+          key: doc.id,
+        };
+      });
+      setData(data);
+    });
+
+    return () => unSubscribe();
+  }, [selectedDate]);
+
   return (
     <View style={styles.container}>
       <View
@@ -53,7 +86,10 @@ export default function TabTwoScreen() {
           </View>
         </View>
         <View style={styles.calendar}>
-          <Text style={styles.text_cd_bold}> Senin, {`\n`} 24 April 2023</Text>
+          <View style={{ gap: 5 }}>
+            <Text style={styles.text_sm}>Tanggal</Text>
+            <Text style={styles.text_md_bold}>{selectedDate}</Text>
+          </View>
           <TouchableOpacity
             lightColor="#0d3876"
             darkColor="#6455cd"
@@ -86,7 +122,10 @@ export default function TabTwoScreen() {
           <View lightColor="#fff" darkColor="#fff" style={styles.modalView}>
             <DatePicker
               mode="calendar"
-              onSelectedChange={(date) => setSelectedDate(date)}
+              onSelectedChange={(date) => {
+                setSelectedDate(date);
+                setOpen(false);
+              }}
               options={{
                 textHeaderColor: "#0d3876",
                 textDefaultColor: "#0d3876",
@@ -97,41 +136,10 @@ export default function TabTwoScreen() {
                 headerFont: "PoppinsSemiBold",
               }}
             />
-            <View style={styles.boxtutup}>
-              <TouchableOpacity
-                lightColor="#f5f5f5"
-                darkColor="#fff"
-                style={styles.tutup}
-              >
-                <Link href="/selected">
-                  <Text
-                    lightColor="#0d3876"
-                    darkColor="#0d3876"
-                    style={styles.text_sm}
-                  >
-                    Submit
-                  </Text>
-                </Link>
-              </TouchableOpacity>
-              <TouchableOpacity
-                lightColor="#f5f5f5"
-                darkColor="#fff"
-                style={styles.tutup}
-                onPress={handleOnPress}
-              >
-                <Text
-                  lightColor="#0d3876"
-                  darkColor="#0d3876"
-                  style={styles.text_sm}
-                >
-                  Tutup
-                </Text>
-              </TouchableOpacity>
-            </View>
           </View>
         </View>
       </Modal>
-      <Card />
+      <Card data={data || []} />
       <View style={{ justifyContent: "center", alignItems: "center" }}>
         <Text style={styles.made}> "Made by Jejeyuyan"✌️</Text>
       </View>
@@ -257,10 +265,6 @@ const styles = StyleSheet.create({
   text_md_bold: {
     fontFamily: "PoppinsSemiBold",
     fontSize: 20,
-  },
-  text_cd_bold: {
-    fontFamily: "PoppinsSemiBold",
-    fontSize: 17,
   },
   made: {
     fontSize: 13,

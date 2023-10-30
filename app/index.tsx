@@ -1,14 +1,13 @@
 import { StyleSheet, useColorScheme } from "react-native";
-import { AntDesign } from "@expo/vector-icons";
-import { FontAwesome5 } from "@expo/vector-icons";
-import { Entypo } from "@expo/vector-icons";
-import { Ionicons } from "@expo/vector-icons";
+import { AntDesign, FontAwesome5, Entypo, Ionicons } from "@expo/vector-icons";
 import { Text, TouchableOpacity, View } from "../components/Themed";
 import { Link } from "expo-router";
 import { Header } from "../components/Header";
 import Status from "../components/Status";
 import MonitoringCard from "../components/MonitoringCard";
+
 import { useState, useEffect } from "react";
+
 import { collection, doc, onSnapshot } from "firebase/firestore";
 import { FIREBASE_DB } from "../config/firebaseConfig";
 
