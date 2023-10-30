@@ -1,9 +1,19 @@
 import { Animated, Dimensions } from "react-native";
 import { StyleSheet } from "react-native";
 import { Text, View } from "../Themed";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Grafik from "../Grafik";
 import Indicator from "./Indicator";
+import {
+  collection,
+  limit,
+  onSnapshot,
+  orderBy,
+  query,
+  where,
+} from "firebase/firestore";
+import { FIREBASE_DB } from "../../config/firebaseConfig";
+import { getToday } from "react-native-modern-datepicker";
 
 const { width } = Dimensions.get("window");
 
@@ -34,8 +44,17 @@ const DATA = [
   },
 ];
 
-export default function Card() {
+interface CardProps<TData> {
+  data: TData[];
+}
+
+export default function Card<TData>({ data }: CardProps<TData>) {
   const scrollX = React.useRef(new Animated.Value(0)).current;
+
+  useEffect(() => {
+    console.log(data);
+  }, []);
+
   return (
     <>
       <View style={Style.heading}>
@@ -78,7 +97,11 @@ export default function Card() {
                   lightcolor={item.lightcolor}
                   lightTextColor={item.LightTextColor}
                   darkTextColor={item.DarkTextColor}
-                  yaxis={[80, 20, 30, 40]}
+                  yaxis={
+                    data && data.length > 0
+                      ? data.map((item: any) => item.amonia)
+                      : [0, 0, 0, 0, 0, 0]
+                  }
                 />
               ) : item.title === "GAS METANA" ? (
                 <Grafik
@@ -86,7 +109,11 @@ export default function Card() {
                   lightcolor={item.lightcolor}
                   lightTextColor={item.LightTextColor}
                   darkTextColor={item.DarkTextColor}
-                  yaxis={[0, 20, 30, 40, 90, 60]}
+                  yaxis={
+                    data && data.length > 0
+                      ? data.map((item: any) => item.metana)
+                      : [0, 0, 0, 0, 0, 0]
+                  }
                 />
               ) : (
                 <Grafik
@@ -94,7 +121,11 @@ export default function Card() {
                   lightcolor={item.lightcolor}
                   lightTextColor={item.LightTextColor}
                   darkTextColor={item.DarkTextColor}
-                  yaxis={[0, 20, 30, 40, 50, 60]}
+                  yaxis={
+                    data && data.length > 0
+                      ? data.map((item: any) => item.karbonmonoksida)
+                      : [0, 0, 0, 0, 0, 0]
+                  }
                 />
               )}
             </View>
