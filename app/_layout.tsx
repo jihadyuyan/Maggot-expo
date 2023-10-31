@@ -6,6 +6,7 @@ import {
 } from "@react-navigation/native";
 import { useFonts } from "expo-font";
 import { SplashScreen, Stack } from "expo-router";
+import registerNNPushToken from "native-notify";
 import { useEffect } from "react";
 import { useColorScheme } from "react-native";
 
@@ -20,6 +21,8 @@ export const unstable_settings = {
 };
 
 export default function RootLayout() {
+  registerNNPushToken(10764, "uYoOlcdcJT0auphuzcC90k");
+
   const [loaded, error] = useFonts({
     Poppins: require("../assets/fonts/Poppins-Regular.ttf"),
     PoppinsSemiBold: require("../assets/fonts/Poppins-SemiBold.ttf"),
