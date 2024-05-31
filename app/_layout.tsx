@@ -10,6 +10,9 @@ import registerNNPushToken from "native-notify";
 import { useEffect } from "react";
 import { useColorScheme } from "react-native";
 
+import { LogLevel, OneSignal } from 'react-native-onesignal';
+import Constants from "expo-constants";
+
 export {
   // Catch any errors thrown by the Layout component.
   ErrorBoundary,
@@ -21,7 +24,12 @@ export const unstable_settings = {
 };
 
 export default function RootLayout() {
-  registerNNPushToken(21593, "QbC2IFrrEDVHv7IcVjHATX");
+  OneSignal.Debug.setLogLevel(LogLevel.Verbose);
+  OneSignal.initialize("31607b52-2662-4756-a9d0-e89ce7c54254");
+  
+  // Also need enable notifications to complete OneSignal setup
+  OneSignal.Notifications.requestPermission(true);
+  // registerNNPushToken(21593, 'QbC2IFrrEDVHv7IcVjHATX');
 
   const [loaded, error] = useFonts({
     Poppins: require("../assets/fonts/Poppins-Regular.ttf"),

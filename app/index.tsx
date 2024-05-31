@@ -14,7 +14,7 @@ import { FIREBASE_DB } from "../config/firebaseConfig";
 import registerNNPushToken from "native-notify";
 
 export default function TabOneScreen() {
-  registerNNPushToken(21593, "QbC2IFrrEDVHv7IcVjHATX");
+  registerNNPushToken(21593, 'QbC2IFrrEDVHv7IcVjHATX');
   const locale = "en";
   const [data, setData] = useState<any>();
   const colorScheme = useColorScheme();

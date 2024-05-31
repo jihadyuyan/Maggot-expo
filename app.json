@@ -33,10 +33,18 @@
     "extra": {
       "eas": {
         "projectId": "37507840-fcf2-4b5b-a183-7371c74da074"
-      }
+      },
+      "oneSignalAppId": "31607b52-2662-4756-a9d0-e89ce7c54254"
     },
     "plugins": [
-      "expo-router"
-    ]
+      "expo-router",
+      [
+        "onesignal-expo-plugin",
+        {
+          "mode": "development"
+        }
+      ]
+    ],
+    "owner": "jejeyuyan"
   }
 }
