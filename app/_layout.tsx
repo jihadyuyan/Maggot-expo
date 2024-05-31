@@ -21,7 +21,7 @@ export const unstable_settings = {
 };
 
 export default function RootLayout() {
-  registerNNPushToken(10764, "uYoOlcdcJT0auphuzcC90k");
+  registerNNPushToken(21593, "QbC2IFrrEDVHv7IcVjHATX");
 
   const [loaded, error] = useFonts({
     Poppins: require("../assets/fonts/Poppins-Regular.ttf"),

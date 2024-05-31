@@ -7,7 +7,8 @@ type GrafikProps = {
   darkcolor?: string;
   lightTextColor: string;
   darkTextColor: string;
-  yaxis: number[];
+  yaxis: any[];
+  ylabel: any[];
 };
 
 const { height, width } = Dimensions.get("window");
@@ -18,6 +19,7 @@ const Grafik = ({
   lightTextColor,
   darkTextColor,
   yaxis,
+  ylabel,
 }: GrafikProps) => {
   const colorScheme = useColorScheme();
 
@@ -30,22 +32,40 @@ const Grafik = ({
       <LineChart
         data={{
           //label dynamic dari data
-          labels: yaxis.map((item, index) => {
+          labels: ylabel.map((item, index) => {
             // return time per index
             if (index === 0) {
-              return "00:00";
+              if (item != "00.00") {
+                return item;
+              }
+              return "00.00";
             } else if (index === 1) {
-              return "04:00";
+              if (item != "04.00") {
+                return item;
+              }
+              return "04.00";
             } else if (index === 2) {
-              return "08:00";
+              if (item != "08.00") {
+                return item;
+              }
+              return "08.00";
             } else if (index === 3) {
-              return "12:00";
+              if (item != "12.00") {
+                return item;
+              }
+              return "12.00";
             } else if (index === 4) {
-              return "16:00";
+              if (item != "16.00") {
+                return item;
+              }
+              return "16.00";
             } else if (index === 5) {
-              return "20:00";
+              if (item != "20.00") {
+                return item;
+              }
+              return "20.00";
             } else {
-              return "00:00";
+              return "00.00";
             }
           }),
           datasets: [

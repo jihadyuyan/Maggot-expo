@@ -102,6 +102,11 @@ export default function Card<TData>({ data }: CardProps<TData>) {
                       ? data.map((item: any) => item.amonia)
                       : [0, 0, 0, 0, 0, 0]
                   }
+                  ylabel={
+                    data && data.length > 0
+                      ? data.map((item: any) => item.jam)
+                      : [0, 0, 0, 0, 0, 0]
+                  }
                 />
               ) : item.title === "GAS METANA" ? (
                 <Grafik
@@ -114,6 +119,11 @@ export default function Card<TData>({ data }: CardProps<TData>) {
                       ? data.map((item: any) => item.metana)
                       : [0, 0, 0, 0, 0, 0]
                   }
+                  ylabel={
+                    data && data.length > 0
+                      ? data.map((item: any) => item.jam)
+                      : [0, 0, 0, 0, 0, 0]
+                  }
                 />
               ) : (
                 <Grafik
@@ -124,6 +134,11 @@ export default function Card<TData>({ data }: CardProps<TData>) {
                   yaxis={
                     data && data.length > 0
                       ? data.map((item: any) => item.karbonmonoksida)
+                      : [0, 0, 0, 0, 0, 0]
+                  }
+                  ylabel={
+                    data && data.length > 0
+                      ? data.map((item: any) => item.jam)
                       : [0, 0, 0, 0, 0, 0]
                   }
                 />

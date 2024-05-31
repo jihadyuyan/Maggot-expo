@@ -21,7 +21,12 @@ import {
 import { FIREBASE_DB } from "../config/firebaseConfig";
 
 export default function TabTwoScreen() {
-  const [selectedDate, setSelectedDate] = useState("");
+  const dateTime = new Date();
+  const year: string = dateTime.getFullYear().toString();
+  const month: string = ("0" + (dateTime.getMonth() + 1)).slice(-2);
+  const date: string = ("0" + dateTime.getDate()).slice(-2);
+
+  const [selectedDate, setSelectedDate] = useState(`${year}/${month}/${date}`);
   const [data, setData] = useState<any[]>();
   const [open, setOpen] = useState(false);
   function handleOnPress() {
@@ -62,26 +67,30 @@ export default function TabTwoScreen() {
       >
         <View style={styles.header}>
           <TouchableOpacity
-            lightColor="#0d3876"
-            darkColor="#6455cd"
+            lightColor="#e2e8f3"
+            darkColor="#96cdc2"
             style={styles.button}
           >
             <Link href="/">
               <AntDesign
                 name="doubleleft"
                 size={24}
-                color={colorScheme === "dark" ? "white" : "#fff"}
+                color={colorScheme === "dark" ? "#2f3254" : "#0d3876"}
               />
             </Link>
           </TouchableOpacity>
-          <View lightColor="#0d3876" darkColor="#6455cd" style={styles.history}>
-            <Text lightColor="#fff" darkColor="white" style={styles.text_sm}>
+          <View lightColor="#e2e8f3" darkColor="#96cdc2" style={styles.history}>
+            <Text
+              lightColor="#0d3876"
+              darkColor="#2f3254"
+              style={styles.text_sm}
+            >
               History
             </Text>
             <Ionicons
               name="stats-chart-outline"
               size={18}
-              color={colorScheme === "dark" ? "white" : "#fff"}
+              color={colorScheme === "dark" ? "#2f3254" : "#0d3876"}
             />
           </View>
         </View>
@@ -136,6 +145,16 @@ export default function TabTwoScreen() {
                 headerFont: "PoppinsSemiBold",
               }}
             />
+            <TouchableOpacity
+              lightColor="#0d3876"
+              darkColor="#2f3254"
+              style={styles.tutup}
+              onPress={handleOnPress}
+            >
+              <Text lightColor="#fff" darkColor="white" style={styles.text_sm}>
+                Tutup
+              </Text>
+            </TouchableOpacity>
           </View>
         </View>
       </Modal>

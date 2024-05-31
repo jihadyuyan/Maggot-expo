@@ -11,7 +11,7 @@ const Status = ({ color, label }: StatusProps) => {
   return (
     <View lightColor="#e2e8f3" darkColor="#6455cd" style={styles.dalam}>
       <View lightColor="#e2e8f3" darkColor="#6455cd">
-        <Text style={styles.text_sm_bold}>Status</Text>
+        <Text style={styles.stats}>Status</Text>
         <View lightColor="#0d3876" darkColor="#fff" style={styles.garis}></View>
       </View>
       <View lightColor="#e2e8f3" darkColor="#6455cd" style={styles.indikator}>
@@ -23,7 +23,7 @@ const Status = ({ color, label }: StatusProps) => {
             },
           ]}
         ></View>
-        <Text style={styles.text_sm_bold}>{label}</Text>
+        <Text style={styles.stat}>{label}</Text>
       </View>
     </View>
   );
@@ -39,22 +39,32 @@ const styles = StyleSheet.create({
   dalam: {
     width: 165,
     borderRadius: 10,
-    padding: 10,
+    padding: 13,
     flexDirection: "column",
     justifyContent: "space-between",
   },
+  stats: {
+    fontFamily: "PoppinsSemiBold",
+    fontSize: 18,
+  },
+  stat: {
+    fontFamily: "PoppinsSemiBold",
+    fontSize: 15,
+  },
   garis: {
-    height: 3,
+    height: 2,
     borderRadius: 10,
+    marginTop: 3,
   },
   bulat: {
-    height: 20,
-    width: 20,
-    borderRadius: 20,
+    height: 25,
+    width: 25,
+    borderRadius: 10,
   },
   indikator: {
+    height: 40,
     flexDirection: "row",
     alignItems: "center",
-    gap: 10,
+    gap: 8,
   },
 });

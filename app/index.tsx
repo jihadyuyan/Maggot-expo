@@ -11,9 +11,34 @@ import { useState, useEffect } from "react";
 import { collection, doc, onSnapshot } from "firebase/firestore";
 import { FIREBASE_DB } from "../config/firebaseConfig";
 
+import registerNNPushToken from "native-notify";
+
 export default function TabOneScreen() {
+  registerNNPushToken(21593, "QbC2IFrrEDVHv7IcVjHATX");
+  const locale = "en";
   const [data, setData] = useState<any>();
   const colorScheme = useColorScheme();
+
+  const dateTime = new Date();
+  const year = dateTime.getFullYear();
+  const month = [
+    "Januari",
+    "Februari",
+    "Maret",
+    "April",
+    "Mei",
+    "Juni",
+    "Juli",
+    "Agustus",
+    "September",
+    "Oktober",
+    "November",
+    "Desember",
+  ][dateTime.getMonth()];
+  const date = dateTime.getDate();
+  const day = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"][
+    dateTime.getDay()
+  ];
 
   useEffect(() => {
     const ref = collection(FIREBASE_DB, "tools");
@@ -35,10 +60,8 @@ export default function TabOneScreen() {
           <Text style={styles.text}>HELLO.</Text>
           <Text style={styles.title}>Maggot App.</Text>
         </View>
-        <View lightColor="#0d3876" darkColor="#6455cd" style={styles.kotaklogo}>
-          <AntDesign name="home" size={30} color="#f5f5f5" />
-        </View>
       </View>
+
       <View
         style={[
           styles.kotak,
@@ -46,9 +69,16 @@ export default function TabOneScreen() {
         ]}
       >
         <View>
-          <Text style={styles.text_sm}>Selamat Datang</Text>
-          <Text style={[styles.text_sm_bold, { flexGrow: 1 }]}>
-            Senin / 24 April {`\n`}2023
+          <Text style={styles.text_sm}>Selamat Datang.</Text>
+          <Text
+            lightColor="#0d3876"
+            darkColor="#f5f5f5"
+            style={[styles.dett, { flexGrow: 1 }]}
+          >
+            {day} / {date} {month}
+          </Text>
+          <Text lightColor="#0d3876" darkColor="#f5f5f5" style={styles.dett}>
+            {year}
           </Text>
           <View
             lightColor="#e2e8f3"
@@ -58,25 +88,25 @@ export default function TabOneScreen() {
             <Entypo
               name="leaf"
               color={colorScheme === "dark" ? "#fff" : "#0d3876"}
-              size={20}
+              size={18}
               style={styles.daun}
             />
             <FontAwesome5
               name="hand-holding"
-              size={25}
+              size={18}
               color={colorScheme === "dark" ? "#fff" : "#0d3876"}
               style={styles.tangan}
             />
           </View>
         </View>
         {data?.fuzzy >= 0 && data?.fuzzy <= 50 && (
-          <Status color="green" label="Normal" />
+          <Status color="#0A8200" label="Normal" />
         )}
         {data?.fuzzy > 50 && data?.fuzzy <= 100 && (
-          <Status color="orange" label="Bahaya" />
+          <Status color="#FFC700" label="Bahaya" />
         )}
         {data?.fuzzy > 100 && data?.fuzzy <= 150 && (
-          <Status color="red" label="Sangat Bahaya" />
+          <Status color="#FF0000" label="Sangat Bahaya" />
         )}
       </View>
       <Text lightColor="#0d3876" darkColor="#fff" style={styles.title}>
@@ -88,6 +118,13 @@ export default function TabOneScreen() {
             title="Gas Amonia"
             sub="NH3"
             value={data?.amonia}
+            backgroundsub={
+              data?.amonia <= 25
+                ? "green"
+                : data?.amonia <= 50
+                ? "#FFC700"
+                : "#FF0000"
+            }
             lightColor="#0d3876"
             darkColor="#6455cd"
             LightTextColor="#fff"
@@ -99,6 +136,13 @@ export default function TabOneScreen() {
             lightColor="#e2e8f3"
             darkColor="#ed7756"
             LightTextColor="#0d3876"
+            backgroundsub={
+              data?.metana <= 200
+                ? "green"
+                : data?.amonia <= 300
+                ? "#FFC700"
+                : "#FF0000"
+            }
           />
         </View>
         <View style={styles.monitoring}>
@@ -109,6 +153,13 @@ export default function TabOneScreen() {
             lightColor="#e2e8f3"
             darkColor="#ed7756"
             LightTextColor="#0d3876"
+            backgroundsub={
+              data?.karbonmonoksida <= 8
+                ? "green"
+                : data?.karbonmonoksida <= 25
+                ? "#FFC700"
+                : "#FF0000"
+            }
           />
           <View lightColor="#e2e8f3" darkColor="#96cdc2" style={styles.button}>
             <View
@@ -193,6 +244,10 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
 
+  dett: {
+    fontSize: 17,
+    fontFamily: "PoppinsSemiBold",
+  },
   kotaklogo: {
     justifyContent: "center",
     alignItems: "center",
@@ -209,18 +264,19 @@ const styles = StyleSheet.create({
     fontFamily: "PoppinsSemiBold",
   },
   tangandaun: {
-    height: 45,
-    width: 45,
+    height: 40,
+    width: 40,
     borderRadius: 10,
+    marginTop: 15,
   },
   tangan: {
     position: "absolute",
     bottom: 5,
-    left: 8,
+    left: 10,
   },
   daun: {
     position: "absolute",
-    left: 15,
+    left: 13,
     top: 6,
   },
   monitoring: {

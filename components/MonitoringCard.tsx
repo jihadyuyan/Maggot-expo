@@ -10,6 +10,7 @@ type MonitoringCardProps = {
   sub?: string;
   value?: number;
   LightTextColor?: string;
+  backgroundsub?: string;
 };
 
 const MonitoringCard = ({
@@ -19,6 +20,7 @@ const MonitoringCard = ({
   darkColor,
   lightColor,
   LightTextColor,
+  backgroundsub,
 }: MonitoringCardProps) => {
   return (
     <>
@@ -34,7 +36,11 @@ const MonitoringCard = ({
           darkColor={darkColor}
           style={Style.indikator}
         >
-          <View lightColor={LightTextColor} darkColor="#fff" style={Style.sub}>
+          <View
+            lightColor={backgroundsub}
+            darkColor={backgroundsub}
+            style={Style.sub}
+          >
             <Text
               lightColor={lightColor}
               darkColor={darkColor}
